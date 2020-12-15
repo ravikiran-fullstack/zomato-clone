@@ -57,12 +57,13 @@ function setLatLong(){
 
 
 //////////////////Daily menu
+//const API_KEY = '9af7220dba33a0911e597ecfa0d83a82';
 async function fetchDailyMenu(){
 
   const res_ids = [ "3600375","3600065","3600017","3600403","3600252","3600265","3600838","3600148","3600153","18871246", "18494064",  "18430785",
                         "52253", "50975","50742","54097", "18379660", "57438","93043", "97575",  "92155",  "18752944",  "91581",  "92163",  "19275716",  "18652022",  "90240"
                       ]
-      const url = `${DAILY_MENU_URL}?${res_ids[0]}`;
+      const url = `${DAILY_MENU_URL}?res_id=${res_ids[0]}`;
       console.log(url)
       try{
         const response = await fetch(url, {
@@ -92,7 +93,6 @@ fetchDailyMenu();
 //1)Create functionality to list the restaurant in the user given location. 
 // Step1: make call to /locations https://developers.zomato.com/api/v2.1/locations?query=Bellary and get the entity_id and entity_type : Input is city name in the query param Parameter
 // Step2: make call to /search https://developers.zomato.com/api/v2.1/search?entity_id=4&entity_type=city and get all the restaurants in the response
-
 
 //2)Create functionality to list all the collections. 
 // Step1: Make call to /locations https://developers.zomato.com/api/v2.1/locations?query=Bellary and get the city_id : Input is city name in the query param Parameter
