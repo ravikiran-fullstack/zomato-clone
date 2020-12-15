@@ -1,0 +1,35 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="styles.css">
+  <title>Zomato Clone</title>
+</head>
+<body>
+
+  <div class="container border mt-5">
+    <div class="row">
+      <div class="offset-1 col-10 col-md-4">
+        <form onsubmit="test()">
+          <div class="form-group">
+            <label for="latitude">Latitude</label>
+            <input type="text" class="form-control" id="latitude" placeholder="Latitude">
+            <small id="latitudeHelp" class="form-text text-muted"></small>
+          </div>
+          <div class="form-group">
+            <label for="longitude">Longitude</label>
+            <input type="text" class="form-control" id="longitude" placeholder="Longitude">
+          </div>
+          <button type="submit" class="btn btn-primary ml-5">Location Details</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+  
+  <script src="apiData.js"></script>
+  <script src="index.js"></script>
+</body>
+</html>
