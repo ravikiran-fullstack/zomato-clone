@@ -37,7 +37,7 @@
     "subzone_id": 85291,
     "city": "Mysore"
   },
-  "link": "https://www.zomato.com/mysore/chamrajpura-restaurants",
+  "link": "https:\/\/www.zomato.com\/mysore\/chamrajpura-restaurants",
   "nearby_restaurants": [
     {
       "restaurant": {
@@ -52,7 +52,7 @@
         "apikey": "9af7220dba33a0911e597ecfa0d83a82",
         "id": "3600375",
         "name": "The Old House",
-        "url": "https://www.zomato.com/mysore/the-old-house-chamrajpura?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1",
+        "url": "https:\/\/www.zomato.com\/mysore\/the-old-house-chamrajpura?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1",
         "location": {
           "address": "451, Jhansi Rani Lakshmi Bai Road, Chamrajpura, Mysore",
           "locality": "Chamrajpura",
@@ -76,7 +76,7 @@
         "is_book_form_web_view": 0,
         "book_form_web_view_url": "",
         "book_again_url": "",
-        "thumb": "https://b.zmtcdn.com/data/res_imagery/3600375_RESTAURANT_2a4218a06d7a59dde9af9804218e534c_c.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A",
+        "thumb": "https:\/\/b.zmtcdn.com\/data\/res_imagery\/3600375_RESTAURANT_2a4218a06d7a59dde9af9804218e534c_c.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A",
         "user_rating": {
           "aggregate_rating": "4.5",
           "rating_text": "Excellent",
@@ -92,18 +92,18 @@
           },
           "votes": 1855
         },
-        "photos_url": "https://www.zomato.com/mysore/the-old-house-chamrajpura/photos?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1#tabtop",
-        "menu_url": "https://www.zomato.com/mysore/the-old-house-chamrajpura/menu?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1&openSwipeBox=menu&showMinimal=1#tabtop",
-        "featured_image": "https://b.zmtcdn.com/data/res_imagery/3600375_RESTAURANT_2a4218a06d7a59dde9af9804218e534c_c.jpg",
+        "photos_url": "https:\/\/www.zomato.com\/mysore\/the-old-house-chamrajpura\/photos?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1#tabtop",
+        "menu_url": "https:\/\/www.zomato.com\/mysore\/the-old-house-chamrajpura\/menu?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1&openSwipeBox=menu&showMinimal=1#tabtop",
+        "featured_image": "https:\/\/b.zmtcdn.com\/data\/res_imagery\/3600375_RESTAURANT_2a4218a06d7a59dde9af9804218e534c_c.jpg",
         "medio_provider": false,
         "has_online_delivery": 0,
         "is_delivering_now": 0,
         "store_type": "",
         "include_bogo_offers": true,
-        "deeplink": "zomato://restaurant/3600375",
+        "deeplink": "zomato:\/\/restaurant\/3600375",
         "is_table_reservation_supported": 0,
         "has_table_booking": 0,
-        "events_url": "https://www.zomato.com/mysore/the-old-house-chamrajpura/events#tabtop?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1"
+        "events_url": "https:\/\/www.zomato.com\/mysore\/the-old-house-chamrajpura\/events#tabtop?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1"
       }
     },
     {
@@ -119,7 +119,7 @@
         "apikey": "9af7220dba33a0911e597ecfa0d83a82",
         "id": "3600065",
         "name": "Hotel RRR",
-        "url": "https://www.zomato.com/mysore/hotel-rrr-mandi-mohalla?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1",
+        "url": "https:\/\/www.zomato.com\/mysore\/hotel-rrr-mandi-mohalla?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1",
         "location": {
           "address": "Sri Harsha Road, Lasker Mohalla, Near Mahatma Gandhi Square, Mandi Mohalla, Mysore",
           "locality": "Mandi Mohalla",
@@ -143,7 +143,7 @@
         "is_book_form_web_view": 0,
         "book_form_web_view_url": "",
         "book_again_url": "",
-        "thumb": "https://b.zmtcdn.com/data/pictures/5/3600065/b2ac3cfbe182c49b85baa4720e49aae2.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A",
+        "thumb": "https:\/\/b.zmtcdn.com\/data\/pictures\/5\/3600065\/b2ac3cfbe182c49b85baa4720e49aae2.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A",
         "user_rating": {
           "aggregate_rating": "4.2",
           "rating_text": "Very Good",
@@ -159,20 +159,20 @@
           },
           "votes": 10620
         },
-        "photos_url": "https://www.zomato.com/mysore/hotel-rrr-mandi-mohalla/photos?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1#tabtop",
-        "menu_url": "https://www.zomato.com/mysore/hotel-rrr-mandi-mohalla/menu?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1&openSwipeBox=menu&showMinimal=1#tabtop",
-        "featured_image": "https://b.zmtcdn.com/data/pictures/5/3600065/b2ac3cfbe182c49b85baa4720e49aae2.jpg",
+        "photos_url": "https:\/\/www.zomato.com\/mysore\/hotel-rrr-mandi-mohalla\/photos?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1#tabtop",
+        "menu_url": "https:\/\/www.zomato.com\/mysore\/hotel-rrr-mandi-mohalla\/menu?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1&openSwipeBox=menu&showMinimal=1#tabtop",
+        "featured_image": "https:\/\/b.zmtcdn.com\/data\/pictures\/5\/3600065\/b2ac3cfbe182c49b85baa4720e49aae2.jpg",
         "medio_provider": false,
         "has_online_delivery": 1,
         "is_delivering_now": 1,
         "store_type": "",
         "include_bogo_offers": true,
-        "deeplink": "zomato://restaurant/3600065",
-        "order_url": "https://www.zomato.com/mysore/hotel-rrr-mandi-mohalla/order?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1",
+        "deeplink": "zomato:\/\/restaurant\/3600065",
+        "order_url": "https:\/\/www.zomato.com\/mysore\/hotel-rrr-mandi-mohalla\/order?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1",
         "order_deeplink": "",
         "is_table_reservation_supported": 0,
         "has_table_booking": 0,
-        "events_url": "https://www.zomato.com/mysore/hotel-rrr-mandi-mohalla/events#tabtop?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1"
+        "events_url": "https:\/\/www.zomato.com\/mysore\/hotel-rrr-mandi-mohalla\/events#tabtop?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1"
       }
     },
     {
@@ -188,9 +188,9 @@
         "apikey": "9af7220dba33a0911e597ecfa0d83a82",
         "id": "3600017",
         "name": "Gufha Restaurant",
-        "url": "https://www.zomato.com/mysore/gufha-restaurant-doora?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1",
+        "url": "https:\/\/www.zomato.com\/mysore\/gufha-restaurant-doora?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1",
         "location": {
-          "address": "35/A, Pai Hotels, Bangalore Nilgiri Road, Doora, Mysore",
+          "address": "35\/A, Pai Hotels, Bangalore Nilgiri Road, Doora, Mysore",
           "locality": "Pai Hotels, Doora",
           "city": "Mysore",
           "city_id": 36,
@@ -212,7 +212,7 @@
         "is_book_form_web_view": 0,
         "book_form_web_view_url": "",
         "book_again_url": "",
-        "thumb": "https://b.zmtcdn.com/data/res_imagery/3600017_RESTAURANT_f8f6c99a21c465c505aa0a2517d1d287.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A",
+        "thumb": "https:\/\/b.zmtcdn.com\/data\/res_imagery\/3600017_RESTAURANT_f8f6c99a21c465c505aa0a2517d1d287.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A",
         "user_rating": {
           "aggregate_rating": "4.1",
           "rating_text": "Very Good",
@@ -228,20 +228,20 @@
           },
           "votes": 1401
         },
-        "photos_url": "https://www.zomato.com/mysore/gufha-restaurant-doora/photos?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1#tabtop",
-        "menu_url": "https://www.zomato.com/mysore/gufha-restaurant-doora/menu?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1&openSwipeBox=menu&showMinimal=1#tabtop",
-        "featured_image": "https://b.zmtcdn.com/data/res_imagery/3600017_RESTAURANT_f8f6c99a21c465c505aa0a2517d1d287.jpg",
+        "photos_url": "https:\/\/www.zomato.com\/mysore\/gufha-restaurant-doora\/photos?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1#tabtop",
+        "menu_url": "https:\/\/www.zomato.com\/mysore\/gufha-restaurant-doora\/menu?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1&openSwipeBox=menu&showMinimal=1#tabtop",
+        "featured_image": "https:\/\/b.zmtcdn.com\/data\/res_imagery\/3600017_RESTAURANT_f8f6c99a21c465c505aa0a2517d1d287.jpg",
         "medio_provider": false,
         "has_online_delivery": 1,
         "is_delivering_now": 1,
         "store_type": "",
         "include_bogo_offers": true,
-        "deeplink": "zomato://restaurant/3600017",
-        "order_url": "https://www.zomato.com/mysore/gufha-restaurant-doora/order?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1",
+        "deeplink": "zomato:\/\/restaurant\/3600017",
+        "order_url": "https:\/\/www.zomato.com\/mysore\/gufha-restaurant-doora\/order?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1",
         "order_deeplink": "",
         "is_table_reservation_supported": 0,
         "has_table_booking": 0,
-        "events_url": "https://www.zomato.com/mysore/gufha-restaurant-doora/events#tabtop?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1"
+        "events_url": "https:\/\/www.zomato.com\/mysore\/gufha-restaurant-doora\/events#tabtop?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1"
       }
     },
     {
@@ -257,7 +257,7 @@
         "apikey": "9af7220dba33a0911e597ecfa0d83a82",
         "id": "3600403",
         "name": "Hotel Hanumanthu",
-        "url": "https://www.zomato.com/mysore/hotel-hanumanthu-mandi-mohalla?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1",
+        "url": "https:\/\/www.zomato.com\/mysore\/hotel-hanumanthu-mandi-mohalla?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1",
         "location": {
           "address": "1720, Akbar Road, Mandi Mohalla, Mysore",
           "locality": "Mandi Mohalla",
@@ -281,7 +281,7 @@
         "is_book_form_web_view": 0,
         "book_form_web_view_url": "",
         "book_again_url": "",
-        "thumb": "https://b.zmtcdn.com/data/pictures/3/3600403/b162a27b74eb9769d13b74625a87eb81.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A",
+        "thumb": "https:\/\/b.zmtcdn.com\/data\/pictures\/3\/3600403\/b162a27b74eb9769d13b74625a87eb81.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A",
         "user_rating": {
           "aggregate_rating": "4.2",
           "rating_text": "Very Good",
@@ -297,18 +297,18 @@
           },
           "votes": 844
         },
-        "photos_url": "https://www.zomato.com/mysore/hotel-hanumanthu-mandi-mohalla/photos?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1#tabtop",
-        "menu_url": "https://www.zomato.com/mysore/hotel-hanumanthu-mandi-mohalla/menu?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1&openSwipeBox=menu&showMinimal=1#tabtop",
-        "featured_image": "https://b.zmtcdn.com/data/pictures/3/3600403/b162a27b74eb9769d13b74625a87eb81.jpg",
+        "photos_url": "https:\/\/www.zomato.com\/mysore\/hotel-hanumanthu-mandi-mohalla\/photos?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1#tabtop",
+        "menu_url": "https:\/\/www.zomato.com\/mysore\/hotel-hanumanthu-mandi-mohalla\/menu?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1&openSwipeBox=menu&showMinimal=1#tabtop",
+        "featured_image": "https:\/\/b.zmtcdn.com\/data\/pictures\/3\/3600403\/b162a27b74eb9769d13b74625a87eb81.jpg",
         "medio_provider": false,
         "has_online_delivery": 0,
         "is_delivering_now": 0,
         "store_type": "",
         "include_bogo_offers": true,
-        "deeplink": "zomato://restaurant/3600403",
+        "deeplink": "zomato:\/\/restaurant\/3600403",
         "is_table_reservation_supported": 0,
         "has_table_booking": 0,
-        "events_url": "https://www.zomato.com/mysore/hotel-hanumanthu-mandi-mohalla/events#tabtop?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1"
+        "events_url": "https:\/\/www.zomato.com\/mysore\/hotel-hanumanthu-mandi-mohalla\/events#tabtop?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1"
       }
     },
     {
@@ -324,7 +324,7 @@
         "apikey": "9af7220dba33a0911e597ecfa0d83a82",
         "id": "3600252",
         "name": "Hotel RRR Mysore",
-        "url": "https://www.zomato.com/mysore/hotel-rrr-mysore-chamrajpura?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1",
+        "url": "https:\/\/www.zomato.com\/mysore\/hotel-rrr-mysore-chamrajpura?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1",
         "location": {
           "address": "Gandhi Square, Chamrajpura, Mysore",
           "locality": "Chamrajpura",
@@ -364,18 +364,18 @@
           },
           "votes": 731
         },
-        "photos_url": "https://www.zomato.com/mysore/hotel-rrr-mysore-chamrajpura/photos?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1#tabtop",
-        "menu_url": "https://www.zomato.com/mysore/hotel-rrr-mysore-chamrajpura/menu?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1&openSwipeBox=menu&showMinimal=1#tabtop",
+        "photos_url": "https:\/\/www.zomato.com\/mysore\/hotel-rrr-mysore-chamrajpura\/photos?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1#tabtop",
+        "menu_url": "https:\/\/www.zomato.com\/mysore\/hotel-rrr-mysore-chamrajpura\/menu?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1&openSwipeBox=menu&showMinimal=1#tabtop",
         "featured_image": "",
         "medio_provider": true,
         "has_online_delivery": 0,
         "is_delivering_now": 0,
         "store_type": "",
         "include_bogo_offers": true,
-        "deeplink": "zomato://restaurant/3600252",
+        "deeplink": "zomato:\/\/restaurant\/3600252",
         "is_table_reservation_supported": 1,
         "has_table_booking": 0,
-        "events_url": "https://www.zomato.com/mysore/hotel-rrr-mysore-chamrajpura/events#tabtop?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1"
+        "events_url": "https:\/\/www.zomato.com\/mysore\/hotel-rrr-mysore-chamrajpura\/events#tabtop?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1"
       }
     },
     {
@@ -384,14 +384,14 @@
           "res_id": 3600265,
           "is_grocery_store": false,
           "has_menu_status": {
-            "delivery": -1,
+            "delivery": true,
             "takeaway": -1
           }
         },
         "apikey": "9af7220dba33a0911e597ecfa0d83a82",
         "id": "3600265",
         "name": "Jalpaan Dining Saga",
-        "url": "https://www.zomato.com/mysore/jalpaan-dining-saga-chamrajpura?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1",
+        "url": "https:\/\/www.zomato.com\/mysore\/jalpaan-dining-saga-chamrajpura?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1",
         "location": {
           "address": "366, 2nd & 3rd Floor, Near Ramaswamy Circle, Chamaraja Mohalla, Chamrajpura, Mysore",
           "locality": "Chamrajpura",
@@ -414,7 +414,7 @@
         "mezzo_provider": "ZOMATO_BOOK",
         "is_book_form_web_view": 0,
         "book_form_web_view_url": "",
-        "thumb": "https://b.zmtcdn.com/data/pictures/5/3600265/59b15e0f8b637445af8fc2300348b1d0.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A",
+        "thumb": "https:\/\/b.zmtcdn.com\/data\/pictures\/5\/3600265\/59b15e0f8b637445af8fc2300348b1d0.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A",
         "user_rating": {
           "aggregate_rating": "4.3",
           "rating_text": "Very Good",
@@ -430,21 +430,21 @@
           },
           "votes": 1554
         },
-        "photos_url": "https://www.zomato.com/mysore/jalpaan-dining-saga-chamrajpura/photos?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1#tabtop",
-        "menu_url": "https://www.zomato.com/mysore/jalpaan-dining-saga-chamrajpura/menu?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1&openSwipeBox=menu&showMinimal=1#tabtop",
-        "featured_image": "https://b.zmtcdn.com/data/pictures/5/3600265/59b15e0f8b637445af8fc2300348b1d0.jpg",
+        "photos_url": "https:\/\/www.zomato.com\/mysore\/jalpaan-dining-saga-chamrajpura\/photos?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1#tabtop",
+        "menu_url": "https:\/\/www.zomato.com\/mysore\/jalpaan-dining-saga-chamrajpura\/menu?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1&openSwipeBox=menu&showMinimal=1#tabtop",
+        "featured_image": "https:\/\/b.zmtcdn.com\/data\/pictures\/5\/3600265\/59b15e0f8b637445af8fc2300348b1d0.jpg",
         "medio_provider": "",
         "has_online_delivery": 1,
         "is_delivering_now": 1,
         "store_type": "",
         "include_bogo_offers": true,
-        "deeplink": "zomato://restaurant/3600265",
-        "order_url": "https://www.zomato.com/mysore/jalpaan-dining-saga-chamrajpura/order?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1",
+        "deeplink": "zomato:\/\/restaurant\/3600265",
+        "order_url": "https:\/\/www.zomato.com\/mysore\/jalpaan-dining-saga-chamrajpura\/order?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1",
         "order_deeplink": "",
         "is_table_reservation_supported": 1,
         "has_table_booking": 1,
-        "book_url": "https://www.zomato.com/mysore/jalpaan-dining-saga-chamrajpura/book?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1",
-        "events_url": "https://www.zomato.com/mysore/jalpaan-dining-saga-chamrajpura/events#tabtop?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1"
+        "book_url": "https:\/\/www.zomato.com\/mysore\/jalpaan-dining-saga-chamrajpura\/book?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1",
+        "events_url": "https:\/\/www.zomato.com\/mysore\/jalpaan-dining-saga-chamrajpura\/events#tabtop?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1"
       }
     },
     {
@@ -460,9 +460,9 @@
         "apikey": "9af7220dba33a0911e597ecfa0d83a82",
         "id": "3600838",
         "name": "Amrutha Veg Restaurant",
-        "url": "https://www.zomato.com/mysore/amrutha-veg-restaurant-chamrajpura?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1",
+        "url": "https:\/\/www.zomato.com\/mysore\/amrutha-veg-restaurant-chamrajpura?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1",
         "location": {
-          "address": "1131/1A BR Ambedkar Road Near RTO Circle, Lakshmipuram Police, Station Back Side, Mysore",
+          "address": "1131\/1A BR Ambedkar Road Near RTO Circle, Lakshmipuram Police, Station Back Side, Mysore",
           "locality": "Chamrajpura",
           "city": "Mysore",
           "city_id": 36,
@@ -484,7 +484,7 @@
         "is_book_form_web_view": 0,
         "book_form_web_view_url": "",
         "book_again_url": "",
-        "thumb": "https://b.zmtcdn.com/data/pictures/8/3600838/209838c19c9f7dd0b3a2a862c93cceed.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A",
+        "thumb": "https:\/\/b.zmtcdn.com\/data\/pictures\/8\/3600838\/209838c19c9f7dd0b3a2a862c93cceed.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A",
         "user_rating": {
           "aggregate_rating": "4.2",
           "rating_text": "Very Good",
@@ -500,18 +500,18 @@
           },
           "votes": 18903
         },
-        "photos_url": "https://www.zomato.com/mysore/amrutha-veg-restaurant-chamrajpura/photos?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1#tabtop",
-        "menu_url": "https://www.zomato.com/mysore/amrutha-veg-restaurant-chamrajpura/menu?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1&openSwipeBox=menu&showMinimal=1#tabtop",
-        "featured_image": "https://b.zmtcdn.com/data/pictures/8/3600838/209838c19c9f7dd0b3a2a862c93cceed.jpg",
+        "photos_url": "https:\/\/www.zomato.com\/mysore\/amrutha-veg-restaurant-chamrajpura\/photos?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1#tabtop",
+        "menu_url": "https:\/\/www.zomato.com\/mysore\/amrutha-veg-restaurant-chamrajpura\/menu?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1&openSwipeBox=menu&showMinimal=1#tabtop",
+        "featured_image": "https:\/\/b.zmtcdn.com\/data\/pictures\/8\/3600838\/209838c19c9f7dd0b3a2a862c93cceed.jpg",
         "medio_provider": false,
         "has_online_delivery": 1,
         "is_delivering_now": 0,
         "store_type": "",
         "include_bogo_offers": true,
-        "deeplink": "zomato://restaurant/3600838",
+        "deeplink": "zomato:\/\/restaurant\/3600838",
         "is_table_reservation_supported": 0,
         "has_table_booking": 0,
-        "events_url": "https://www.zomato.com/mysore/amrutha-veg-restaurant-chamrajpura/events#tabtop?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1"
+        "events_url": "https:\/\/www.zomato.com\/mysore\/amrutha-veg-restaurant-chamrajpura\/events#tabtop?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1"
       }
     },
     {
@@ -527,7 +527,7 @@
         "apikey": "9af7220dba33a0911e597ecfa0d83a82",
         "id": "3600148",
         "name": "Andhra Ruchulu",
-        "url": "https://www.zomato.com/mysore/andhra-ruchulu-doora?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1",
+        "url": "https:\/\/www.zomato.com\/mysore\/andhra-ruchulu-doora?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1",
         "location": {
           "address": "Pai Hotels, Bangalore Nilgiri Road, Opposite Suburban Bus Stand, Mysore, Doora, Mysore",
           "locality": "Pai Hotels, Doora",
@@ -551,7 +551,7 @@
         "is_book_form_web_view": 0,
         "book_form_web_view_url": "",
         "book_again_url": "",
-        "thumb": "https://b.zmtcdn.com/data/pictures/8/3600148/068376c3e525643eaec1e04eb79d53fb.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A",
+        "thumb": "https:\/\/b.zmtcdn.com\/data\/pictures\/8\/3600148\/068376c3e525643eaec1e04eb79d53fb.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A",
         "user_rating": {
           "aggregate_rating": "4.1",
           "rating_text": "Very Good",
@@ -567,20 +567,20 @@
           },
           "votes": 1167
         },
-        "photos_url": "https://www.zomato.com/mysore/andhra-ruchulu-doora/photos?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1#tabtop",
-        "menu_url": "https://www.zomato.com/mysore/andhra-ruchulu-doora/menu?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1&openSwipeBox=menu&showMinimal=1#tabtop",
-        "featured_image": "https://b.zmtcdn.com/data/pictures/8/3600148/068376c3e525643eaec1e04eb79d53fb.jpg",
+        "photos_url": "https:\/\/www.zomato.com\/mysore\/andhra-ruchulu-doora\/photos?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1#tabtop",
+        "menu_url": "https:\/\/www.zomato.com\/mysore\/andhra-ruchulu-doora\/menu?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1&openSwipeBox=menu&showMinimal=1#tabtop",
+        "featured_image": "https:\/\/b.zmtcdn.com\/data\/pictures\/8\/3600148\/068376c3e525643eaec1e04eb79d53fb.jpg",
         "medio_provider": false,
         "has_online_delivery": 1,
         "is_delivering_now": 1,
         "store_type": "",
         "include_bogo_offers": true,
-        "deeplink": "zomato://restaurant/3600148",
-        "order_url": "https://www.zomato.com/mysore/andhra-ruchulu-doora/order?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1",
+        "deeplink": "zomato:\/\/restaurant\/3600148",
+        "order_url": "https:\/\/www.zomato.com\/mysore\/andhra-ruchulu-doora\/order?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1",
         "order_deeplink": "",
         "is_table_reservation_supported": 0,
         "has_table_booking": 0,
-        "events_url": "https://www.zomato.com/mysore/andhra-ruchulu-doora/events#tabtop?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1"
+        "events_url": "https:\/\/www.zomato.com\/mysore\/andhra-ruchulu-doora\/events#tabtop?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1"
       }
     },
     {
@@ -596,7 +596,7 @@
         "apikey": "9af7220dba33a0911e597ecfa0d83a82",
         "id": "3600153",
         "name": "McDonald's",
-        "url": "https://www.zomato.com/mysore/mcdonalds-chamrajpura?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1",
+        "url": "https:\/\/www.zomato.com\/mysore\/mcdonalds-chamrajpura?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1",
         "location": {
           "address": "Jhansi Rani Lakshmi Bai Road, Devaraja Mohallah, Chamrajpura, Mysore",
           "locality": "Chamrajpura",
@@ -620,7 +620,7 @@
         "is_book_form_web_view": 0,
         "book_form_web_view_url": "",
         "book_again_url": "",
-        "thumb": "https://b.zmtcdn.com/data/pictures/3/3600153/549fa9a4b5709056b5133112ae2cf805.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A",
+        "thumb": "https:\/\/b.zmtcdn.com\/data\/pictures\/3\/3600153\/549fa9a4b5709056b5133112ae2cf805.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A",
         "user_rating": {
           "aggregate_rating": "4.1",
           "rating_text": "Very Good",
@@ -636,20 +636,20 @@
           },
           "votes": 9290
         },
-        "photos_url": "https://www.zomato.com/mysore/mcdonalds-chamrajpura/photos?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1#tabtop",
-        "menu_url": "https://www.zomato.com/mysore/mcdonalds-chamrajpura/menu?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1&openSwipeBox=menu&showMinimal=1#tabtop",
-        "featured_image": "https://b.zmtcdn.com/data/pictures/3/3600153/549fa9a4b5709056b5133112ae2cf805.jpg",
+        "photos_url": "https:\/\/www.zomato.com\/mysore\/mcdonalds-chamrajpura\/photos?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1#tabtop",
+        "menu_url": "https:\/\/www.zomato.com\/mysore\/mcdonalds-chamrajpura\/menu?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1&openSwipeBox=menu&showMinimal=1#tabtop",
+        "featured_image": "https:\/\/b.zmtcdn.com\/data\/pictures\/3\/3600153\/549fa9a4b5709056b5133112ae2cf805.jpg",
         "medio_provider": false,
         "has_online_delivery": 1,
         "is_delivering_now": 1,
         "store_type": "",
         "include_bogo_offers": true,
-        "deeplink": "zomato://restaurant/3600153",
-        "order_url": "https://www.zomato.com/mysore/mcdonalds-chamrajpura/order?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1",
+        "deeplink": "zomato:\/\/restaurant\/3600153",
+        "order_url": "https:\/\/www.zomato.com\/mysore\/mcdonalds-chamrajpura\/order?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1",
         "order_deeplink": "",
         "is_table_reservation_supported": 0,
         "has_table_booking": 0,
-        "events_url": "https://www.zomato.com/mysore/mcdonalds-chamrajpura/events#tabtop?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1"
+        "events_url": "https:\/\/www.zomato.com\/mysore\/mcdonalds-chamrajpura\/events#tabtop?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1"
       }
     }
   ]

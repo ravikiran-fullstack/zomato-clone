@@ -1,19 +1,85 @@
-console.log(API_KEY);
-console.log(LOCATION_DETAILS_URL);
+//2)Create functionality to list all the collections. 
+// Step1: Make call to /locations https://developers.zomato.com/api/v2.1/locations?query=Bellary and get the city_id : Input is city name in the query param Parameter
+// Step2: Make call to /collections  https://developers.zomato.com/api/v2.1/collections?city_id=32 with city_id retrieved in the Step1
 
 
+//5) Create functionality to populate the location details based on coordinates
 //https://developers.zomato.com/api/v2.1/geocode?lat=12.2958&lon=76.6394
 async function fetchLocationDetails(latitude, longitude){
   let url = `${LOCATION_DETAILS_URL}?lat=${latitude}&lon=${longitude}`
   
-  const response = await fetch(url, {
-                      headers: {
-                        'Content-Type': 'application/json',
-                        'user-key': `${API_KEY}`
-                      },
-                  });
-  const data = await response.json();
-  console.log(data);
+  try{
+    const response = await fetch(url, {
+        headers: {
+          'Content-Type': 'application/json',
+          'user-key': `${API_KEY}`
+        },
+    });
+    const data = await response.json();
+    return data;
+  }catch(err){
+    document.getElementById('latitude').value = '';
+    document.getElementById('longitude').value = '';
+    document.getElementById('errorMessage').innerHTML = 'Please try again later';
+  }
+}
+
+function setLatLong(){
+  const latitude = document.getElementById('latitude').value;
+  const longitude = document.getElementById('longitude').value;
+  console.log(latitude, longitude);
+  fetchLocationDetails(latitude, longitude)
+    .then(data =>  {
+      showLocationDetails(data);
+    }).catch(err => {
+      document.getElementById('latitude').value = '';
+      document.getElementById('longitude').value = '';
+      document.getElementById('errorMessage').innerHTML = 'Please try later';
+    });
+  event.preventDefault();
+}
+
+function showLocationDetails(locationDetails){
+  console.log('locationDetails', locationDetails);
+  const cityName = locationDetails.location.city_name;
+  const topCuisines = locationDetails.popularity.top_cuisines.join(',');
+  document.getElementById('locationDetails').innerHTML = 
+  ` <div class="row locationDetailsTitle">
+      <div class="col-md-6">
+        <div class="text-uppercase">City Name: <span>${cityName}</span></div>
+      </div>
+      <div class="col-md-6">
+        <div class="text-uppercase">Top Cuisines: <span>${topCuisines}</span></div>
+      </div>
+    </div>`
+
+  const nearByRestaurants = locationDetails.nearby_restaurants;
+  nearByRestaurants.forEach(restaurant => {
+  
+    const card = document.createElement('div')
+    card.classList.add('card','mt-3');
+    //Need to make the image height same
+    card.innerHTML = `<div class="row">
+                        <div class="col-md-4 col-12">
+                        
+                          <img class="img-fluid" src="${restaurant.restaurant.featured_image}" alt="image not found">
+                        </div>
+                        <div class="col-md-8 col-12">
+                          <div class="card-body">
+                            <h4 class="card-title text-capitalize">Name: <span>${restaurant.restaurant.name}</span></h4>
+                            <p class="card-title text-capitalize">Address: <span>${restaurant.restaurant.location.address}</span></p>
+                            <p class="card-title text-capitalize">Rating: <span>${restaurant.restaurant.user_rating.aggregate_rating}</span></p>
+                            <p class="card-title text-capitalize">Cuisines: <span>${restaurant.restaurant.cuisines}</span></p>
+                            <p class="card-title text-capitalize">Price Range: <span>${restaurant.restaurant.price_range}</span></p>      
+                          </div>
+                        </div>
+                      </div>`
+
+    document.getElementById('locationDetails').append(card);                  
+  });
+
+
+
 }
 
 function testLatitude(){
@@ -46,41 +112,31 @@ function testLongitude(){
   } 
 }
 
-function setLatLong(){
-  const latitude = document.getElementById('latitude').value;
-  const longitude = document.getElementById('longitude').value;
-  console.log(latitude, longitude);
-  fetchLocationDetails(latitude, longitude);
-  event.preventDefault();
-}
-
-
-
 //////////////////Daily menu
 //const API_KEY = '9af7220dba33a0911e597ecfa0d83a82';
-async function fetchDailyMenu(){
+// async function fetchDailyMenu(){
 
-  const res_ids = [ "3600375","3600065","3600017","3600403","3600252","3600265","3600838","3600148","3600153","18871246", "18494064",  "18430785",
-                        "52253", "50975","50742","54097", "18379660", "57438","93043", "97575",  "92155",  "18752944",  "91581",  "92163",  "19275716",  "18652022",  "90240"
-                      ]
-      const url = `${DAILY_MENU_URL}?res_id=${res_ids[0]}`;
-      console.log(url)
-      try{
-        const response = await fetch(url, {
-                                    headers: {
-                                      'Content-Type': 'application/json',
-                                      'user-key': `${API_KEY}`
-                                    },
-                                }); 
-      const data = await response.json();
-      console.log(data);                          
-      } catch(err){
-        console.log(err);
-      }
+//   const res_ids = [ "3600375","3600065","3600017","3600403","3600252","3600265","3600838","3600148","3600153","18871246", "18494064",  "18430785",
+//                         "52253", "50975","50742","54097", "18379660", "57438","93043", "97575",  "92155",  "18752944",  "91581",  "92163",  "19275716",  "18652022",  "90240"
+//                       ]
+//       const url = `${DAILY_MENU_URL}?res_id=${res_ids[0]}`;
+//       console.log(url)
+//       try{
+//         const response = await fetch(url, {
+//                                     headers: {
+//                                       'Content-Type': 'application/json',
+//                                       'user-key': `${API_KEY}`
+//                                     },
+//                                 }); 
+//       const data = await response.json();
+//       console.log(data);                          
+//       } catch(err){
+//         console.log(err);
+//       }
 
-}
+// }
 
-fetchDailyMenu();
+// fetchDailyMenu();
 
 //https://developers.zomato.com/api/v2.1/search?count=10&cuisines=85  ------- Based on the Cuisine ID
 //https://developers.zomato.com/api/v2.1/search?entity_id=36&entity_type=city&count=10 ------- Based on the City or location and entity type (Optional)
@@ -94,9 +150,7 @@ fetchDailyMenu();
 // Step1: make call to /locations https://developers.zomato.com/api/v2.1/locations?query=Bellary and get the entity_id and entity_type : Input is city name in the query param Parameter
 // Step2: make call to /search https://developers.zomato.com/api/v2.1/search?entity_id=4&entity_type=city and get all the restaurants in the response
 
-//2)Create functionality to list all the collections. 
-// Step1: Make call to /locations https://developers.zomato.com/api/v2.1/locations?query=Bellary and get the city_id : Input is city name in the query param Parameter
-// Step2: Make call to /collections  https://developers.zomato.com/api/v2.1/collections?city_id=32 with city_id retrieved in the Step1
+
 
 //3.A)Create functionality to list the restaurant based on cuisine, rating and location. 
 // Step1: Make call to /search https://developers.zomato.com/api/v2.1/search?count=10&cuisines=85 with cuisines ID hardcoded in the HTML UI and retrieve all the restaurants 

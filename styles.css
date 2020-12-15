@@ -1,0 +1,7 @@
+.locationDetailsTitle{
+  padding: 5px;
+  font-weight: bold;
+}
+.locationDetailsTitle span{
+  text-transform: capitalize;
+}
