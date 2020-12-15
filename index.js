@@ -32,16 +32,16 @@ function testLatitude(){
 }
 
 function testLongitude(){
-  const pattern = /^-?([1]?[1-7][1-9]|[1]?[1-8][0]|[1-9]?[0-9])\.{1}\d{1,6}/;
+  const pattern = /^-?([1-8]?[1-9]|[1-9]0)\.{1}\d{1,6}/;
   const long = document.getElementById('longitude');
   if(long.value.match(pattern)){
-    lat.style.borderColor = '';
-    document.getElementById('latitudeHelp').innerHTML = '';
+    long.style.borderColor = '';
+    document.getElementById('longitudeHelp').innerHTML = '';
     document.querySelector('button[type="submit"]').disabled = false;
   } else {
-    console.log('not matched',lat);
-    lat.style.borderColor = 'red';
-    document.getElementById('latitudeHelp').innerHTML = 'Invalid Format';
+    long.style.borderColor = 'red';
+    long.focus();
+    document.getElementById('longitudeHelp').innerHTML = 'Invalid Format';
     document.querySelector('button[type="submit"]').disabled = true;
   } 
 }
