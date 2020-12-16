@@ -21,8 +21,15 @@ async function fetchRestaurantsByLocations(entity_id, entity_type){
 }
 
 async function fetPreRestaurantsByLocationData(){
+  
   const locationName = document.getElementById('locationName').value;
   const locationData = await fetchLocation(locationName);
+
+  if(locationData.location_suggestions.length === 0){
+    document.getElementById('errorMessageRestaurantsByLocations').innerHTML = `${locationName} has no collections yet, please try another city`;
+    document.getElementById('restaurantsByLocationDetails').innerHTML = '';
+    return;
+  }
 
   const city_name = locationData.location_suggestions[0].city_name;
   const entity_id = locationData.location_suggestions[0].entity_id;
@@ -33,10 +40,7 @@ async function fetPreRestaurantsByLocationData(){
 }
 
 function showHtmlForRestaurantsByLocation(restaurantsByLocationData, city_name){
-  console.log(restaurantsByLocationData);
-  
- 
-  document.getElementById('restaurantsByLocationDetails').innerHTML = 
+  document.getElementById('restaurantsByLocationDetails').innerHTML = '';
   ` <div class="row locationDetailsTitle">
       <div class="col-md-6">
         <div class="text-uppercase">City Name: <span>${city_name}</span></div>
@@ -93,7 +97,7 @@ async function fetchLocation(cityName){
     const data = await response.json();
     return data;
   }catch(err){
-    document.getElementById(`'${cityName}'`).value = '';
+    //document.getElementById(`'${cityName}'`).value = '';
     document.getElementById('errorMessage').innerHTML = 'Please try again later';
   }
 }
@@ -195,19 +199,33 @@ async function fetchLocationDetails(latitude, longitude){
   }
 }
 
-function setLatLong(){
-  const latitude = document.getElementById('latitude').value;
-  const longitude = document.getElementById('longitude').value;
+function showMyLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else { 
+   // x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) {
+  console.log("Latitude: " + position.coords.latitude + 
+   "<br>Longitude: " + position.coords.longitude);
+  const latitude = position.coords.latitude;
+  const longitude = position.coords.longitude;
   console.log(latitude, longitude);
-  fetchLocationDetails(latitude, longitude)
-    .then(data =>  {
-      showLocationDetails(data);
-    }).catch(err => {
-      document.getElementById('latitude').value = '';
-      document.getElementById('longitude').value = '';
-      document.getElementById('errorMessage').innerHTML = 'Please try later';
-    });
-  event.preventDefault();
+  setLatLong(latitude, longitude);
+}
+
+//fetchLocationDetails('15.6353','76.896');
+
+async function setLatLong(latitude, longitude){  
+  try{
+    const data = await fetchLocationDetails(latitude, longitude);
+    showLocationDetails(data);
+    console.log(data);
+  }catch(err){
+    document.getElementById('errorMessage').innerHTML = 'Please try later';
+  }
 }
 
 function showLocationDetails(locationDetails){
@@ -233,7 +251,7 @@ function showLocationDetails(locationDetails){
     card.innerHTML = `<div class="row">
                         <div class="col-md-4 col-12">
                         
-                          <img class="img-fluid" src="${restaurant.restaurant.featured_image}" alt="image not found">
+                          <img class="img-fluid" src="${restaurant.restaurant.featured_image}" alt="image not available">
                         </div>
                         <div class="col-md-8 col-12">
                           <div class="card-body">
