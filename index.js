@@ -274,11 +274,10 @@ async function fetchLocationDetails(latitude, longitude){
 }
 
 function showMyLocation(cb) {
-  // console.log(cb);
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(cb);
   } else { 
-    document.getElementById('errorMessage').innerHTML = 'Enable Location is browser';
+    document.getElementById('errorMessageHomePage').innerHTML = 'Please Enable Location in browser';
   }
 }
 
