@@ -2,10 +2,80 @@
 // Step1: make call to /locations https://developers.zomato.com/api/v2.1/locations?query=Bellary and get the entity_id and entity_type : Input is city name in the query param Parameter
 // Step2: make call to /search https://developers.zomato.com/api/v2.1/search?entity_id=4&entity_type=city and get all the restaurants in the response
 
+async function fetchRestaurantsByLocations(entity_id, entity_type){
+  let url = `${RESTAURANTS_SEARCH_URL}?entity_id=${entity_id}&entity_type=${entity_type}`;
+  
+  try{
+    const response = await fetch(url, {
+        headers: {
+          'Content-Type': 'application/json',
+          'user-key': `${API_KEY}`
+        },
+    });
+    const data = await response.json();
+    return data;
+  }catch(err){
+    document.getElementById('locationName').value = '';
+    document.getElementById('errorMessageRestaurantsByLocations').innerHTML = 'Please try again later';
+  }
+}
 
+async function fetPreRestaurantsByLocationData(){
+  const locationName = document.getElementById('locationName').value;
+  const locationData = await fetchLocation(locationName);
 
+  const city_name = locationData.location_suggestions[0].city_name;
+  const entity_id = locationData.location_suggestions[0].entity_id;
+  const entity_type = locationData.location_suggestions[0].entity_type;
+  
+  const restaurantsByLocationData = await fetchRestaurantsByLocations(entity_id, entity_type);
+  showHtmlForRestaurantsByLocation(restaurantsByLocationData,city_name);
+}
 
+function showHtmlForRestaurantsByLocation(restaurantsByLocationData, city_name){
+  console.log(restaurantsByLocationData);
+  
+ 
+  document.getElementById('restaurantsByLocationDetails').innerHTML = 
+  ` <div class="row locationDetailsTitle">
+      <div class="col-md-6">
+        <div class="text-uppercase">City Name: <span>${city_name}</span></div>
+      </div>
+      <div class="col-md-6">
+        <div class="text-uppercase">Number of Restaurants: <span>${restaurantsByLocationData.restaurants.length}</span></div>
+      </div>
+    </div>`
+  
+    restaurantsByLocationData.restaurants.forEach(restaurant => {
+      restaurant = restaurant.restaurant;
+      const card = document.createElement('div')
+      card.classList.add('card','mt-3');
+      //Need to make the image height same
+      card.innerHTML = `<div class="row">
+                          <div class="col-md-4 col-12">
+                            <img class="img-thumbnail" src="${restaurant.image_url}" alt="image not found">
+                          </div>
+                          <div class="col-md-8 col-12">
+                            <div class="card-body">
+                              <h4 class="card-title text-capitalize">${restaurant.name}</h4>
+                              <p class="card-title text-capitalize"><span>${restaurant.establishment.join(' ')}</span></p>
+                              <p class="card-title text-capitalize">Cuisines: <span>${restaurant.cuisines}</span></p>
+                              <p class="card-title text-capitalize">Rating: <span>${restaurant.user_rating.aggregate_rating}</span></p>
+                              <p class="card-title text-capitalize">Address: <span>${restaurant.location.address}</span></p>
+                              <a target="_blank" href="${restaurant.menu_url}">Check Menu</a>
+                            </div>
+                          </div>
+                        </div>`
 
+      document.getElementById('restaurantsByLocationDetails').append(card);
+    });
+}
+
+function showRestaurantsByLocation(){
+  document.getElementById('errorMessageRestaurantsByLocations').innerHTML = '';
+  fetPreRestaurantsByLocationData();
+  event.preventDefault();
+}
 
 //2)Create functionality to list all the collections. 
 // Step1: Make call to /locations https://developers.zomato.com/api/v2.1/locations?query=Bellary and get the city_id : Input is city name in the query param Parameter
@@ -23,7 +93,7 @@ async function fetchLocation(cityName){
     const data = await response.json();
     return data;
   }catch(err){
-    document.getElementById('cityName').value = '';
+    document.getElementById(`'${cityName}'`).value = '';
     document.getElementById('errorMessage').innerHTML = 'Please try again later';
   }
 }
@@ -88,7 +158,7 @@ function showCollections(collectionsData, cityName){
                           <div class="card-body">
                             <h4 class="card-title text-capitalize">Title: <span>${collection.title}</span></h4>
                             <p class="card-title text-capitalize">Description: <span>${collection.description}</span></p>
-                            <a target="_blank" href="${collection.url}">More About this place</a>
+                            <a target="_blank" href="${collection.share_url}">More About this collection</a>
                           </div>
                         </div>
                       </div>`
