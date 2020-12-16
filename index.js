@@ -1,3 +1,12 @@
+//1)Create functionality to list the restaurant in the user given location. 
+// Step1: make call to /locations https://developers.zomato.com/api/v2.1/locations?query=Bellary and get the entity_id and entity_type : Input is city name in the query param Parameter
+// Step2: make call to /search https://developers.zomato.com/api/v2.1/search?entity_id=4&entity_type=city and get all the restaurants in the response
+
+
+
+
+
+
 //2)Create functionality to list all the collections. 
 // Step1: Make call to /locations https://developers.zomato.com/api/v2.1/locations?query=Bellary and get the city_id : Input is city name in the query param Parameter
 // Step2: Make call to /collections  https://developers.zomato.com/api/v2.1/collections?city_id=32 with city_id retrieved in the Step1
@@ -60,7 +69,7 @@ function showCollections(collectionsData, cityName){
         <div class="col-md-6 text-uppercase">
           City Name: <span>${cityName}</span>
         </div>
-        <div class="col-md-6 text-uppercase">
+        <div class="col-md-6 text-uppercase text-center">
           Number of Collections: <span>${collectionsData.collections.length}</span>
         </div>
     </div>`
@@ -237,9 +246,7 @@ function testLongitude(){
 
 //https://developers.zomato.com/api/v2.1/collections?city_id=32 Based on the city ID or we can use Latitude and Longitude
 
-//1)Create functionality to list the restaurant in the user given location. 
-// Step1: make call to /locations https://developers.zomato.com/api/v2.1/locations?query=Bellary and get the entity_id and entity_type : Input is city name in the query param Parameter
-// Step2: make call to /search https://developers.zomato.com/api/v2.1/search?entity_id=4&entity_type=city and get all the restaurants in the response
+
 
 
 
