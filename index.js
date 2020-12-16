@@ -240,11 +240,13 @@ function showLocationForCollections(position) {
 async function getCoordinatesForCollections(position) {
   const latitude = position.coords.latitude;
   const longitude = position.coords.longitude;
+  document.getElementById('loadingIndicator').classList.remove('hidden');
   const locationData = await fetchLocationDetails(latitude, longitude);
   const city_id = locationData.location.city_id;
   const city_name = locationData.location.city_name;
   document.getElementById('cityName').value = city_name;
   const data = await fetchCollections(city_id);
+  document.getElementById('loadingIndicator').classList.add('hidden');
   showCollections(data, city_name);
 }
 
