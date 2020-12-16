@@ -62,6 +62,7 @@ function showCollections(collectionsData, cityName){
   console.log(collectionsData, cityName);
   if(!collectionsData.collections){
     document.getElementById('errorMessageCollections').innerHTML = `${cityName} has no collections yet, please try another city`;
+    document.getElementById('collectionDetails').innerHTML = '';
     return;
   }
   document.getElementById('collectionDetails').innerHTML = 
