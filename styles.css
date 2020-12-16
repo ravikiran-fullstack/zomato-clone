@@ -19,3 +19,29 @@
 .homeSortBtn{
   padding:5px 5px;
 }
+
+#locationHomePage{
+  font-size: 17px;
+}
+
+#detectLocationBtn{
+  cursor: pointer;
+}
+
+.navBrandClass{
+  display: inline !important;
+  font-family: customCursiveFont;
+  font-weight: bold;
+  font-size: 3rem; 
+  margin-right: 0;
+  width: 100px;
+  height: auto;
+}
+
+ul li{
+  cursor: pointer;
+}
+
+.hidden{
+  display: none !important;
+}

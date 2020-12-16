@@ -1,3 +1,51 @@
+
+let previousBtn = 'homeBtn';
+let previousSection = 'homeSection';
+function showHomeSection(){
+  if(previousBtn!== ''){
+    document.getElementById(previousBtn).classList.remove('active');
+  }
+  if(previousSection !== ''){
+    document.getElementById(previousSection).classList.add('hidden');
+  }
+  document.getElementById('homeBtn').classList.add('active');
+  document.getElementById('homeSection').classList.remove('hidden');
+
+
+  showSortBtns();
+  listRestaurantsInUserLocation();
+
+
+  previousBtn = 'homeBtn';
+  previousSection = 'homeSection';
+}
+
+function showCollectionsSection(){
+  if(previousBtn!== ''){
+    document.getElementById(previousBtn).classList.remove('active');
+  }
+  if(previousSection !== ''){
+    document.getElementById(previousSection).classList.add('hidden');
+  }
+  document.getElementById('collectionsBtn').classList.add('active');
+  document.getElementById('collectionsSection').classList.remove('hidden');
+  previousBtn = 'collectionsBtn';
+  previousSection = 'collectionsSection';
+}
+
+function showLocationDetailsSection(){
+  if(previousBtn!== ''){
+    document.getElementById(previousBtn).classList.remove('active');
+  }
+  if(previousSection !== ''){
+    document.getElementById(previousSection).classList.add('hidden');
+  }
+  document.getElementById('locationDetailsBtn').classList.add('active');
+  document.getElementById('locationDetailsSection').classList.remove('hidden');
+  previousBtn = 'locationDetailsBtn';
+  previousSection = 'locationDetailsSection';
+}
+
 //1)Create functionality to list the restaurant in the user given location. 
 // Step1: make call to /locations https://developers.zomato.com/api/v2.1/locations?query=Bellary and get the entity_id and entity_type : Input is city name in the query param Parameter
 // Step2: make call to /search https://developers.zomato.com/api/v2.1/search?entity_id=4&entity_type=city and get all the restaurants in the response
@@ -506,6 +554,11 @@ function populateHomePage(restaurantsData){
     });
 }
 
+function detectLocation(){
+  showSortBtns();
+  showMyLocation(getCoordinates);
+}
+
 function listRestaurantsInUserLocation(){
   showMyLocation(getCoordinates);
 }
@@ -533,5 +586,12 @@ function showRestaurantsByLocationHomePage(){
 // Step1: Make call to /geocode https://developers.zomato.com/api/v2.1/geocode?lat=12.2958&lon=76.6394 with latitude and longitude entered by the user and show the location details to the user
 
 
+window.addEventListener('click', function(event){
+  const btn = document.querySelector('.navbar-toggler');
+  const ariaExpanded = btn.getAttribute('aria-expanded') === "true";
+  if(ariaExpanded){
+    btn.click();
+  }
+});
 
 
