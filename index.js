@@ -1,7 +1,98 @@
 //2)Create functionality to list all the collections. 
 // Step1: Make call to /locations https://developers.zomato.com/api/v2.1/locations?query=Bellary and get the city_id : Input is city name in the query param Parameter
 // Step2: Make call to /collections  https://developers.zomato.com/api/v2.1/collections?city_id=32 with city_id retrieved in the Step1
+async function fetchLocation(cityName){
+  let url = `${LOCATIONS_URL}?query=${cityName}`;
+  
+  try{
+    const response = await fetch(url, {
+        headers: {
+          'Content-Type': 'application/json',
+          'user-key': `${API_KEY}`
+        },
+    });
+    const data = await response.json();
+    return data;
+  }catch(err){
+    document.getElementById('cityName').value = '';
+    document.getElementById('errorMessage').innerHTML = 'Please try again later';
+  }
+}
+//https://developers.zomato.com/api/v2.1/collections?city_id=3
+async function fetchCollections(cityId){
+  let url = `${COLLECTIONS_URL}?city_id=${cityId}`;
+  
+  try{
+    const response = await fetch(url, {
+        headers: {
+          'Content-Type': 'application/json',
+          'user-key': `${API_KEY}`
+        },
+    });
+    const data = await response.json();
+    return data;
+  }catch(err){
+    document.getElementById('cityName').value = '';
+    document.getElementById('errorMessageCollections').innerHTML = 'Please try again later';
+  }
+}
 
+async function fetchPreCollectionsData(){
+  const cityName = document.getElementById('cityName').value;
+  const locationData = await fetchLocation(cityName);
+
+  const city_name = locationData.location_suggestions[0].city_name;
+  const city_id = locationData.location_suggestions[0].city_id;
+  const cityLatitude = locationData.location_suggestions[0].latitude;
+  const cityLongitude = locationData.location_suggestions[0].longitude;
+  const data = await fetchCollections(city_id);
+  showCollections(data, city_name);
+}
+
+function showCollections(collectionsData, cityName){
+  console.log(collectionsData, cityName);
+  if(!collectionsData.collections){
+    document.getElementById('errorMessageCollections').innerHTML = `${cityName} has no collections yet, please try another city`;
+    return;
+  }
+  document.getElementById('collectionDetails').innerHTML = 
+  ` <div class="row locationDetailsTitle">
+        <div class="col-md-6 text-uppercase">
+          City Name: <span>${cityName}</span>
+        </div>
+        <div class="col-md-6 text-uppercase">
+          Number of Collections: <span>${collectionsData.collections.length}</span>
+        </div>
+    </div>`
+  const collectionsArray = collectionsData.collections;
+  collectionsArray.forEach(data => {
+    const collection = data.collection;
+    const card = document.createElement('div')
+    card.classList.add('card','mt-3');
+    //Need to make the image height same
+    card.innerHTML = `<div class="row">
+                        <div class="col-md-4 col-12">
+                          <img class="img-thumbnail" src="${collection.image_url}" alt="image not found">
+                        </div>
+                        <div class="col-md-8 col-12">
+                          <div class="card-body">
+                            <h4 class="card-title text-capitalize">Title: <span>${collection.title}</span></h4>
+                            <p class="card-title text-capitalize">Description: <span>${collection.description}</span></p>
+                            <a target="_blank" href="${collection.url}">More About this place</a>
+                          </div>
+                        </div>
+                      </div>`
+
+    document.getElementById('collectionDetails').append(card); 
+  });
+}
+
+//fetchLocation('Bellary', '12.2958', '76.6394');
+function getCollections(){
+  document.getElementById('errorMessageCollections').innerHTML = '';
+  fetchPreCollectionsData();
+  event.preventDefault();
+}
 
 //5) Create functionality to populate the location details based on coordinates
 //https://developers.zomato.com/api/v2.1/geocode?lat=12.2958&lon=76.6394

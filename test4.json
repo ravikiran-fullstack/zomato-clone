@@ -1,0 +1,53 @@
+{
+  "collections": [
+    {
+      "collection": {
+        "collection_id": 12,
+        "res_count": 10,
+        "image_url": "https://b.zmtcdn.com/data/collections/b881f496afbf6a3baeb1165ec3dd7ec1_1460368719.jpg",
+        "url": "https://www.zomato.com/hyderabad/cheap-eats?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1",
+        "title": "Pocket Friendly",
+        "description": "Your top options when dining on a budget",
+        "share_url": "http://www.zoma.to/c-36/12"
+      }
+    },
+    {
+      "collection": {
+        "collection_id": 225,
+        "res_count": 7,
+        "image_url": "https://b.zmtcdn.com/data/collections/e0ce96d87dbbd975662d28bb43b335ac_1582603125.jpg",
+        "url": "https://www.zomato.com/hyderabad/fine-dining-restaurants?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1",
+        "title": "Luxury Dining",
+        "description": "The best restaurants in town for a complete fine-dining experience",
+        "share_url": "http://www.zoma.to/c-36/225"
+      }
+    },
+    {
+      "collection": {
+        "collection_id": 438,
+        "res_count": 9,
+        "image_url": "https://b.zmtcdn.com/data/collections/7f68fde319524e0d152ac8f01c89623c_1582286063.jpg",
+        "url": "https://www.zomato.com/hyderabad/top-cafes?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1",
+        "title": "Great Cafes",
+        "description": "Grab a bite to eat, a cup of coffee, and catch up with friends or family",
+        "share_url": "http://www.zoma.to/c-36/438"
+      }
+    },
+    {
+      "collection": {
+        "collection_id": 284516,
+        "res_count": 10,
+        "image_url": "https://b.zmtcdn.com/data/collections/a9.jpg",
+        "url": "https://www.zomato.com/hyderabad/must-visit-restaurants-in-mysore?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1",
+        "title": "Must-visit restaurants in Mysore",
+        "description": "These restaurants in Mysore will want you to keep coming back for more",
+        "share_url": "http://www.zoma.to/c-36/284516"
+      }
+    }
+  ],
+  "has_more": 0,
+  "share_url": "http://www.zoma.to/c-36",
+  "display_text": "OR EXPLORE OUR COLLECTIONS",
+  "has_total": 0,
+  "user_has_addresses": true
+}

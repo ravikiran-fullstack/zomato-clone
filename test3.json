@@ -1,0 +1,97 @@
+{
+  "collections": [
+    {
+      "collection": {
+        "collection_id": 40,
+        "res_count": 16,
+        "image_url": "https://b.zmtcdn.com/data/collections/bc0c37f8fc87da896641714b9ef7f0b7_1575621158.jpg",
+        "url": "https://www.zomato.com/hyderabad/dessert-places?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1",
+        "title": "Sweet Tooth",
+        "description": "From cookies and doughnuts to ice cream and cakes, knock yourself out with these classic and creative desserts ",
+        "share_url": "http://www.zoma.to/c-32/40"
+      }
+    },
+    {
+      "collection": {
+        "collection_id": 438,
+        "res_count": 5,
+        "image_url": "https://b.zmtcdn.com/data/collections/7f68fde319524e0d152ac8f01c89623c_1582286063.jpg",
+        "url": "https://www.zomato.com/hyderabad/top-cafes?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1",
+        "title": "Great Cafes",
+        "description": "Grab a bite to eat, a cup of coffee, and catch up with friends or family",
+        "share_url": "http://www.zoma.to/c-32/438"
+      }
+    },
+    {
+      "collection": {
+        "collection_id": 337,
+        "res_count": 13,
+        "image_url": "https://b.zmtcdn.com/data/collections/a54eb9a04d0075407f3172f4712c9c03_1421668945_l.jpg",
+        "url": "https://www.zomato.com/hyderabad/punjabi-restaurants?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1",
+        "title": "Flavours of Punjab",
+        "description": "Butter chicken, naan and lassi. And so much more",
+        "share_url": "http://www.zoma.to/c-32/337"
+      }
+    },
+    {
+      "collection": {
+        "collection_id": 67,
+        "res_count": 7,
+        "image_url": "https://b.zmtcdn.com/data/collections/46098205ffe88f108841c9e0b7627e45_1429785695_l.jpg",
+        "url": "https://www.zomato.com/hyderabad/hangout-places?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1",
+        "title": "Hanging Out",
+        "description": "Casual hangouts to catch up with friends.",
+        "share_url": "http://www.zoma.to/c-32/67"
+      }
+    },
+    {
+      "collection": {
+        "collection_id": 3,
+        "res_count": 5,
+        "image_url": "https://b.zmtcdn.com/data/collections/90999c2395ba9c9c40998607c8dd5af1_1581058174.jpg",
+        "url": "https://www.zomato.com/hyderabad/romantic-restaurants?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1",
+        "title": "Romantic",
+        "description": "The perfect spots for a romantic meal",
+        "share_url": "http://www.zoma.to/c-32/3"
+      }
+    },
+    {
+      "collection": {
+        "collection_id": 321,
+        "res_count": 5,
+        "image_url": "https://b.zmtcdn.com/data/collections/f672e9556e44fe33ff47bf751639c0bd_1535356450.jpg",
+        "url": "https://www.zomato.com/hyderabad/pizza-time?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1",
+        "title": "Pizza Time!",
+        "description": "The best pizza places in town",
+        "share_url": "http://www.zoma.to/c-32/321"
+      }
+    },
+    {
+      "collection": {
+        "collection_id": 62,
+        "res_count": 7,
+        "image_url": "https://b.zmtcdn.com/data/collections/dbb83e0eaec19bf21898eb66506ddbec_1421673371_l.jpg",
+        "url": "https://www.zomato.com/hyderabad/gujarati-thali?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1",
+        "title": "Gujarati Thali",
+        "description": "Khichdi, dholka, puri, bhaaji, kadhi...you get the idea.",
+        "share_url": "http://www.zoma.to/c-32/62"
+      }
+    },
+    {
+      "collection": {
+        "collection_id": 299955,
+        "res_count": 16,
+        "image_url": "https://b.zmtcdn.com/data/collections/c6844818d95f37c620f69ba99b289fa1_1562151307.jpg",
+        "url": "https://www.zomato.com/hyderabad/food-hygiene-rated-restaurants-in-vadodara?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1",
+        "title": "Food Hygiene Rated Restaurants In Vadodara",
+        "description": "Most hygienic restaurants in your city",
+        "share_url": "http://www.zoma.to/c-32/299955"
+      }
+    }
+  ],
+  "has_more": 0,
+  "share_url": "http://www.zoma.to/c-32",
+  "display_text": "OR EXPLORE OUR COLLECTIONS",
+  "has_total": 0,
+  "user_has_addresses": true
+}
