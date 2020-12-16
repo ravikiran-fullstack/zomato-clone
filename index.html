@@ -45,7 +45,7 @@
               <div class="col-lg-10">
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
-                    <span class="input-group-text" id="detectLocationBtn" onclick="detectLocation()"><i
+                    <span class="input-group-text geoLocationBtn" id="detectLocationBtn" onclick="detectLocation()"><i
                         class="medium material-icons">add_location</i></span>
                   </div>
                   <input type="text" class="form-control" id="locationHomePage" placeholder="Location" required>
@@ -82,11 +82,18 @@
   <section id="collectionsSection" class="hidden">
     <div class="container mt-3">
       <div class="row">
-        <div class="offset-md-3 col-md-6 col-12">
+        <div class="col-2">
+          <h3>Collections</h3>
+        </div>
+        <div class="offset-md-3 col-md-6 col-10">
           <form class="form" role="form" onsubmit="getCollections()">
             <div class="row">
               <div class="col-lg-10">
                 <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text geoLocationBtn" id="detectLocationBtnForCollections" onclick="detectLocationForCollections()"><i
+                        class="medium material-icons">add_location</i></span>
+                  </div>
                   <input type="text" class="form-control" id="cityName" placeholder="City Name" required>
                   <div class="input-group-append">
                     <button type="submit" class="btn btn-primary homeLocationBtn">Fetch Collections</button>
@@ -96,6 +103,13 @@
               </div>
             </div>
           </form>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div>
+            <h6>Explore curated lists of top restaurants, cafes, pubs, and bars in your city, based on trends</h6>
+          </div>
         </div>
       </div>
       <div class="row">
@@ -117,7 +131,7 @@
 
   <section id="locationDetailsSection" class="hidden">
     <div class="container mt-5">
-      <div class="row">
+      <!-- <div class="row">
         <div class="offset-md-3 col-md-6 col-12">
           <form class="form" role="form">
             <div class="form-group row">
@@ -128,7 +142,7 @@
             </div>
           </form>
         </div>
-      </div>
+      </div> -->
       <div class="row">
         <div class="col-12 text-center">
           <p id="errorMessage" class="form-text text-danger"></p>

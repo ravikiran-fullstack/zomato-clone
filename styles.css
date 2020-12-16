@@ -24,7 +24,7 @@
   font-size: 17px;
 }
 
-#detectLocationBtn{
+.geoLocationBtn{
   cursor: pointer;
 }
 

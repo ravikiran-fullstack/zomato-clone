@@ -27,6 +27,7 @@ function showCollectionsSection(){
   if(previousSection !== ''){
     document.getElementById(previousSection).classList.add('hidden');
   }
+  getCollections();
   document.getElementById('collectionsBtn').classList.add('active');
   document.getElementById('collectionsSection').classList.remove('hidden');
   previousBtn = 'collectionsBtn';
@@ -40,6 +41,7 @@ function showLocationDetailsSection(){
   if(previousSection !== ''){
     document.getElementById(previousSection).classList.add('hidden');
   }
+  showMyLocation(showPosition);
   document.getElementById('locationDetailsBtn').classList.add('active');
   document.getElementById('locationDetailsSection').classList.remove('hidden');
   previousBtn = 'locationDetailsBtn';
@@ -169,18 +171,6 @@ async function fetchCollections(cityId){
   }
 }
 
-async function fetchPreCollectionsData(){
-  const cityName = document.getElementById('cityName').value;
-  const locationData = await fetchLocation(cityName);
-
-  const city_name = locationData.location_suggestions[0].city_name;
-  const city_id = locationData.location_suggestions[0].city_id;
-  const cityLatitude = locationData.location_suggestions[0].latitude;
-  const cityLongitude = locationData.location_suggestions[0].longitude;
-  const data = await fetchCollections(city_id);
-  showCollections(data, city_name);
-}
-
 function showCollections(collectionsData, cityName){
   // console.log(collectionsData, cityName);
   if(!collectionsData.collections){
@@ -209,8 +199,8 @@ function showCollections(collectionsData, cityName){
                         </div>
                         <div class="col-md-8 col-12">
                           <div class="card-body">
-                            <h4 class="card-title text-capitalize">Title: <span>${collection.title}</span></h4>
-                            <p class="card-title text-capitalize">Description: <span>${collection.description}</span></p>
+                            <h4 class="card-title text-capitalize">${collection.title}</h4>
+                            <p class="card-title text-capitalize">${collection.description}</p>
                             <a target="_blank" href="${collection.share_url}">More About this collection</a>
                           </div>
                         </div>
@@ -220,6 +210,20 @@ function showCollections(collectionsData, cityName){
   });
 }
 
+async function fetchPreCollectionsData(){
+  let cityName = document.getElementById('cityName').value;
+  if(!cityName || cityName === ''){
+    cityName = 'hyderabad';
+    document.getElementById('cityName').value = cityName;
+  }
+  const locationData = await fetchLocation(cityName);
+  
+  const city_name = locationData.location_suggestions[0].city_name;
+  const city_id = locationData.location_suggestions[0].city_id;
+  const data = await fetchCollections(city_id);
+  showCollections(data, city_name);
+}
+
 //fetchLocation('Bellary', '12.2958', '76.6394');
 function getCollections(){
   document.getElementById('errorMessageCollections').innerHTML = '';
@@ -227,10 +231,32 @@ function getCollections(){
   event.preventDefault();
 }
 
+function showLocationForCollections(position) {
+  const latitude = position.coords.latitude;
+  const longitude = position.coords.longitude;
+  console.log(latitude, longitude);
+}
+
+async function getCoordinatesForCollections(position) {
+  const latitude = position.coords.latitude;
+  const longitude = position.coords.longitude;
+  const locationData = await fetchLocationDetails(latitude, longitude);
+  const city_id = locationData.location.city_id;
+  const city_name = locationData.location.city_name;
+  document.getElementById('cityName').value = city_name;
+  const data = await fetchCollections(city_id);
+  showCollections(data, city_name);
+}
+
+function detectLocationForCollections(){
+  console.log('detectLocationForCollections');
+  showMyLocation(getCoordinatesForCollections); 
+}
+
 //5) Create functionality to populate the location details based on coordinates
 //https://developers.zomato.com/api/v2.1/geocode?lat=12.2958&lon=76.6394
 async function fetchLocationDetails(latitude, longitude){
-  let url = `${LOCATION_DETAILS_URL}?lat=${latitude}&lon=${longitude}`
+  let url = `${GEO_CODE_URL}?lat=${latitude}&lon=${longitude}`
   
   try{
     const response = await fetch(url, {
@@ -448,10 +474,8 @@ async function searchRestaurantsByCityId(city_id, sortObj){
 }
 
 async function getCoordinates(position) {
- // const location = document.getElementById('locationHomePage').value;
   const latitude = position.coords.latitude;
   const longitude = position.coords.longitude;
-  // console.log(latitude, longitude, location)
   const locationData = await fetchLocationDetails(latitude, longitude);
   const entity_id = locationData.location.entity_id;
   const entity_type = locationData.location.entity_type;
@@ -553,6 +577,8 @@ function populateHomePage(restaurantsData){
       document.getElementById('homePageRestaurantDetails').append(card);
     });
 }
+
+
 
 function detectLocation(){
   showSortBtns();
