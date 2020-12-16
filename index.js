@@ -200,7 +200,7 @@ function showCollections(collectionsData, cityName){
         col3.innerHTML = `<div class="card bg-dark text-white">
             <img src="${collection.image_url}" class="img-fluid-collections" alt="image not found">
             <div class="card-img-overlay collectionCard">
-              <h5 class="card-title text-white" style="padding-top:75%;">${collection.title}</h5>
+              <h5 class="card-title text-white" style="padding-top:68%;">${collection.title}</h5>
               <u><a target="_blank" class="text-white" href="${collection.share_url}">More About this collection</a></u>
             </div>
           </div>
