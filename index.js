@@ -57,7 +57,6 @@ function showLocationDetailsSection(){
 //1)Create functionality to list the restaurant in the user given location. 
 // Step1: make call to /locations https://developers.zomato.com/api/v2.1/locations?query=Bellary and get the entity_id and entity_type : Input is city name in the query param Parameter
 // Step2: make call to /search https://developers.zomato.com/api/v2.1/search?entity_id=4&entity_type=city and get all the restaurants in the response
-
 async function fetchRestaurantsByLocations(entity_id, entity_type){
   let url = `${RESTAURANTS_SEARCH_URL}?entity_id=${entity_id}&entity_type=${entity_type}`;
   
@@ -154,11 +153,9 @@ async function fetchLocation(cityName){
     const data = await response.json();
     return data;
   }catch(err){
-    //document.getElementById(`'${cityName}'`).value = '';
     document.getElementById('errorMessage').innerHTML = 'Please try again later';
   }
 }
-//https://developers.zomato.com/api/v2.1/collections?city_id=3
 async function fetchCollections(cityId){
   let url = `${COLLECTIONS_URL}?city_id=${cityId}`;
   
@@ -217,7 +214,7 @@ function showCollections(collectionsData, cityName){
 async function fetchPreCollectionsData(){
   let cityName = document.getElementById('cityName').value;
   if(!cityName || cityName === ''){
-    cityName = 'hyderabad';
+    cityName = 'Hyderabad';
     document.getElementById('cityName').value = cityName;
   }
   document.getElementById('loadingIndicator').classList.remove('hidden');
@@ -230,7 +227,6 @@ async function fetchPreCollectionsData(){
   showCollections(data, city_name);
 }
 
-//fetchLocation('Bellary', '12.2958', '76.6394');
 function getCollections(){
   document.getElementById('errorMessageCollections').innerHTML = '';
   fetchPreCollectionsData();
@@ -310,14 +306,27 @@ function showLocationDetails(locationDetails){
   const cityName = locationDetails.location.city_name;
   const topCuisines = locationDetails.popularity.top_cuisines.join(',');
   document.getElementById('locationDetails').innerHTML = 
-  ` <div class="row locationDetailsTitle">
-      <div class="col-md-6">
-        <div class="text-uppercase">City Name: <span>${cityName}</span></div>
-      </div>
-      <div class="col-md-6">
-        <div class="text-uppercase">Top Cuisines: <span>${topCuisines}</span></div>
-      </div>
-    </div>`
+                                                            `<div class="row locationDetailsTitle">
+                                                            <div class="col-12 text-center text-capitalize">
+                                                              <h4>Check what's cooking in your city</h4>
+                                                            </div>
+                                                          </div>
+                                                          <div class="row locationDetailsTitle">
+                                                          <div class="col-md-6">
+                                                            <div class="text-capitalize">City Name: ${cityName}</div>
+                                                          </div>
+                                                          <div class="col-md-6">
+                                                            <div class="text-capitalize">Top Cuisines: ${topCuisines}</div>
+                                                          </div>
+                                                          </div>
+                                                          <div class="row locationDetailsTitle">
+                                                          <div class="col-md-6">
+                                                            <div class="text-capitalize">Night Life Index: ${locationDetails.popularity.nightlife_index}</div>
+                                                          </div>
+                                                          <div class="col-md-6">
+                                                            <div class="text-capitalize">Popularity: ${locationDetails.popularity.popularity}</div>
+                                                          </div>
+                                                          </div>`
 
   const nearByRestaurants = locationDetails.nearby_restaurants;
   const rowLocations = document.createElement('div');
@@ -327,7 +336,7 @@ function showLocationDetails(locationDetails){
   nearByRestaurants.forEach(restaurant => {
   
     const col4 = document.createElement('div')
-    col4.classList.add('col-4','mt-3');
+    col4.classList.add('col-12','col-md-4','mt-3');
     //Need to make the image height same
     const restaurantImage = fetchRandomImages();
     col4.innerHTML = `<div class="card">
@@ -337,7 +346,7 @@ function showLocationDetails(locationDetails){
                         <div class="card-body">
                           <h4 class="card-title text-capitalize">Name: <span>${restaurant.restaurant.name}</span></h4>
                           <p class="card-title text-capitalize">Rating: <span>${restaurant.restaurant.user_rating.aggregate_rating}</span></p>
-                          <p class="card-title text-capitalize">Cuisines: <span>${restaurant.restaurant.cuisines}</span></p>
+                          <p class="card-title text-capitalize text-truncate">Cuisines: <span>${restaurant.restaurant.cuisines}</span></p>
                           <p class="card-title text-capitalize">${restaurant.restaurant.average_cost_for_two} per person</p>      
                           <a target="_blank" href="${restaurant.restaurant.url}">Check Menu</a>
                         </div>
@@ -355,7 +364,6 @@ function testLatitude(){
     document.getElementById('latitudeHelp').innerHTML = '';
     document.querySelector('button[type="submit"]').disabled = false;
   } else {
-    // console.log('not matched',lat);
     lat.style.borderColor = 'red';
     document.getElementById('latitudeHelp').innerHTML = 'Invalid Format';
     document.querySelector('button[type="submit"]').disabled = true;
@@ -376,56 +384,6 @@ function testLongitude(){
     document.querySelector('button[type="submit"]').disabled = true;
   } 
 }
-
-//////////////////Daily menu
-//const API_KEY = '9af7220dba33a0911e597ecfa0d83a82';
-// async function fetchDailyMenu(){
-
-//   const res_ids = [ "3600375","3600065","3600017","3600403","3600252","3600265","3600838","3600148","3600153","18871246", "18494064",  "18430785",
-//                         "52253", "50975","50742","54097", "18379660", "57438","93043", "97575",  "92155",  "18752944",  "91581",  "92163",  "19275716",  "18652022",  "90240"
-//                       ]
-//       const url = `${DAILY_MENU_URL}?res_id=${res_ids[0]}`;
-//       console.log(url)
-//       try{
-//         const response = await fetch(url, {
-//                                     headers: {
-//                                       'Content-Type': 'application/json',
-//                                       'user-key': `${API_KEY}`
-//                                     },
-//                                 }); 
-//       const data = await response.json();
-//       console.log(data);                          
-//       } catch(err){
-//         console.log(err);
-//       }
-
-// }
-
-// fetchDailyMenu();
-
-//https://developers.zomato.com/api/v2.1/search?count=10&cuisines=85  ------- Based on the Cuisine ID
-//https://developers.zomato.com/api/v2.1/search?entity_id=36&entity_type=city&count=10 ------- Based on the City or location and entity type (Optional)
-//https://developers.zomato.com/api/v2.1/search?entity_id=36&count=10 ------- Based on the city ID
-//https://developers.zomato.com/api/v2.1/search?q=rating Based on user ratings Where user location is set by the user
-
-
-//https://developers.zomato.com/api/v2.1/collections?city_id=32 Based on the city ID or we can use Latitude and Longitude
-
-
-
-
-//3.A)Create functionality to list the restaurant based on cuisine 
-// Step1: Make call to /search https://developers.zomato.com/api/v2.1/search?count=10&cuisines=85 with cuisines ID hardcoded in the HTML UI and retrieve all the restaurants 
-
-//3.B)Create functionality to list the restaurant based on rating. 
-// Step1: ---------------------------------------------------
-
-//3.C)Create functionality to list the restaurant based on location. 
-// Step1: Make call to /locations https://developers.zomato.com/api/v2.1/locations?query=Bengaluru and get the latitude and longitude for Bengaluru
-// Step2: Make call to /search https://developers.zomato.com/api/v2.1/search?count=10&lat=12.971606&lon=77.594376 with latitude and longitude retrieved from Step1 and retrieve all the restaurants 
-
-//listRestaurantsInUserLocation
-//listRestaurantsInUserLocation();
 
 async function searchRestaurantsByCoords(entity_id, entity_type){
   let url = `${RESTAURANTS_SEARCH_URL}?entity_id=${entity_id}&entity_type=${entity_type}`;
@@ -474,7 +432,6 @@ async function searchRestaurantsByCityId(city_id, sortObj){
     const data = await response.json();
     return data;
   }catch(err){
-    console.error('-----------------------------------errroorrrrrrrrr')
     document.getElementById('locationName').value = '';
     document.getElementById('errorMessageRestaurantsByLocations').innerHTML = 'Please try again later';
   }
@@ -497,11 +454,9 @@ async function getCoordinates(position) {
 }
 
 function fetchRandomImages(){
-  const src = `/images/${Math.floor(Math.random()*15+ 1)}.jpg`;
+  const src = `/images/${Math.floor(Math.random()*31+ 1)}.jpg`;
   return src;
 }
-
-//arrow_drop_down
 
 let sortByCostUp = false;
 let sortByRatingsUp = false;
@@ -591,15 +546,11 @@ function populateHomePage(restaurantsData){
   }catch(err){
     document.getElementById('errorMessageHomePage').innerHTML = 'Please Try refreshing the page';
   }  
-  
-    console.log('loading end--------------------------')
 }
 
 function generateStars(ratings){
 
 }
-
-
 
 function detectLocation(){
   showSortBtns();
@@ -622,13 +573,6 @@ function showRestaurantsByLocationHomePage(){
   showRestaurantByCity();
   event.preventDefault();
 }
-
-//4) Create functionality to list the daily menu in the restaurant. 
-// Not able to do this because https://developers.zomato.com/api/v2.1/dailymenu?res_id=18706428 responds back code 400 bad requests --
-
-//5) Create functionality to populate the location details based on coordinates. 
-// Step1: Make call to /geocode https://developers.zomato.com/api/v2.1/geocode?lat=12.2958&lon=76.6394 with latitude and longitude entered by the user and show the location details to the user
-
 
 window.addEventListener('click', function(event){
   const btn = document.querySelector('.navbar-toggler');

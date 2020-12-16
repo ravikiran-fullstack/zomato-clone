@@ -1,5 +1,4 @@
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -89,13 +88,13 @@
   <section id="collectionsSection" class="hidden">
     <div class="container mt-2">
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-6 col-12">
           <h3>Collections</h3>
         </div>
         <div class="col-md-6 col-12">
           <form class="form" role="form" onsubmit="getCollections()">
             <div class="row">
-              <div class="col-lg-10">
+              <div class="offset-md-3 col-md-9 col-12">
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
                     <span class="input-group-text geoLocationBtn" id="detectLocationBtnForCollections" onclick="detectLocationForCollections()"><i
@@ -128,9 +127,6 @@
 
     <div class="container" id="collectionDetails">
       <div class="row">
-        <!-- <div class="col-12" id="collectionDetails">
-
-        </div> -->
       </div>
      
     </div>
@@ -138,19 +134,7 @@
 
 
   <section id="locationDetailsSection" class="hidden">
-    <div class="container mt-5">
-      <!-- <div class="row">
-        <div class="offset-md-3 col-md-6 col-12">
-          <form class="form" role="form">
-            <div class="form-group row">
-              <label class="col-lg-4 col-form-label form-control-label"></label>
-              <div class="col-lg-8">
-                <button type="button" class="btn btn-danger" onclick="showMyLocation(showPosition)">show my Location details</button>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div> -->
+    <div class="container mt-2">
       <div class="row">
         <div class="col-12 text-center">
           <p id="errorMessage" class="form-text text-danger"></p>
@@ -167,46 +151,70 @@
     </div> 
   </section>
 
-
-  <!-- <div class="container mt-5">
+ 
+<!-- Footer -->
+<footer class="page-footer font-small mdb-color lighten-3 pt-4 footerCustom">
+  <div class="container text-center text-md-left">
     <div class="row">
-      <div class="offset-md-3 col-md-6 col-12">
-        <h2>Restaurants In Your Location</h2>
-        <form class="form" role="form" onsubmit="showRestaurantsByLocation()">
-          <div class="form-group row mt-3">
-            <label class="col-lg-4 col-form-label form-control-label" for="locationName">Location</label>
-            <div class="col-lg-8">
-              <input type="text" class="form-control" id="locationName" placeholder="Location" required>
-              <small id="locationNameHelp" class="form-text text-muted"></small>
-            </div>           
-          </div>
-          
-          <div class="form-group row">
-            <label class="col-lg-4 col-form-label form-control-label"></label>
-            <div class="col-lg-8">
-              <button type="submit" class="btn btn-primary">Fetch Restaurants</button>
-            </div>
-          </div>
-        </form>
+      <div class="col-md-2 col-lg-2 mr-auto my-md-4 my-0 mt-4 mb-1">
+        <h5 class="font-weight-bold text-uppercase mb-4"><i>Zomato</i></h5>
+        <h5>Company</h5>
+        <a href="#" class="text-muted">who we are</a><br>
+        <a href="#" class="text-muted">Blog</a><br>
+        <a href="#" class="text-muted">Careers</a><br>
+        <a href="#" class="text-muted">Report Fraud</a><br>
+        <a href="#" class="text-muted">Contact</a><br>
+      </div>
+      <hr class="clearfix w-100 d-md-none">
+      <div class="col-md-2 col-lg-3 mx-auto my-md-4 my-0 mt-4 mb-1">
+        <h5 class="font-weight-bold text-uppercase mb-4">For foodies</h5>
+        <a href="#" class="text-muted">Code of Conduct</a><br>
+        <a href="#" class="text-muted">Community</a><br>
+        <a href="#" class="text-muted">Blogger Help</a><br>
+        <a href="#" class="text-muted">Developers</a><br>
+        <a href="#" class="text-muted">Mobile Apps</a><br>
+      </div>
+      <hr class="clearfix w-100 d-md-none">
+      <div class="col-md-3 col-lg-3 mx-auto my-md-4 my-0 mt-4 mb-1">
+        <h5 class="font-weight-bold text-uppercase mb-4">For restaurants</h5>
+        <a href="#" class="text-muted">Add Restaurant</a><br>
+        <a href="#" class="text-muted">Claim Your Listing</a><br>
+        <a href="#" class="text-muted">Business App</a><br>
+        <a href="#" class="text-muted">Restaurant Widgets</a><br>
+        <a href="#" class="text-muted">Products for Business</a><br>
+      </div>
+      <hr class="clearfix w-100 d-md-none">
+      <div class="col-md-2 col-lg-2 text-center mx-auto my-4">
+        <h5 class="font-weight-bold text-uppercase mb-4">For You</h5>
+        <a href="#" class="text-muted">Privacy</a><br>
+        <a href="#" class="text-muted">Terms</a><br>
+        <a href="#" class="text-muted">Security</a><br>
+        <a href="#" class="text-muted">Sitemap</a><br>
+      </div>
+      <hr class="clearfix w-100 d-md-none">
+      <div class="col-md-2 col-lg-2 text-center mx-auto my-4">
+        <h5 class="font-weight-bold text-uppercase mb-4">Social Links</h5>
+        <a href="#" class="text-muted">Facebook</a><br>
+        <a href="#" class="text-muted">Twitter</a><br>
+        <a href="#" class="text-muted">Instagram</a><br>
       </div>
     </div>
+  </div>
+  
+  <div class="container">
     <div class="row">
-      <div class="col-12 text-center">
-        <p id="errorMessageRestaurantsByLocations" class="form-text text-danger"></p>
+      <div class="col-12">
+        <hr>
+        <div class="footer-copyright text-center text-small py-3">
+          <small>
+            By continuing past this page, you agree to our Terms of Service, Cookie Policy, Privacy Policy and Content Policies. All trademarks are properties of their respective owners. 2008-2020 © Zomato™ Pvt Ltd. All rights reserved.
+          </small> 
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-12" id="restaurantsByLocationDetails">
-        
-      </div>
-    </div>
-  </div> -->
-
-
-
+</footer>
  
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">

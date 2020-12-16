@@ -71,3 +71,12 @@ ul li{
     font-size: 12px;
   }
 }
+
+.navbar-collapse{
+  justify-content: flex-end;
+}
+
+.footerCustom{
+  background-color: #F8F8F8;
+  margin-top: 5rem;
+}
