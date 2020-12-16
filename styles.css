@@ -2,6 +2,20 @@
   padding: 5px;
   font-weight: bold;
 }
+
 .locationDetailsTitle span{
   text-transform: capitalize;
+}
+
+.homeLocationBtn{
+  border-top-right-radius: 5px !important;
+  border-bottom-right-radius: 5px !important;
+}
+
+.card-body p{
+  margin-bottom:0px;
+}
+
+.homeSortBtn{
+  padding:5px 5px;
 }

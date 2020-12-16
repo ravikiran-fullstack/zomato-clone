@@ -4,14 +4,56 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="./styles.css">
   <title>Zomato Clone</title>
 </head>
 <body>
+
+
   <div class="container mt-5">
     <div class="row">
       <div class="offset-md-3 col-md-6 col-12">
         <h2>Restaurants In User Location</h2>
+        <form class="form" role="form" onsubmit="showRestaurantsByLocationHomePage()">
+          <div class="form-group row mt-3">
+            <div class="col-lg-10">
+              <div class="input-group mb-3">
+                <input type="text" class="form-control" id="locationHomePage" placeholder="Location" required>
+                <div class="input-group-append">
+                  <button class="btn btn-danger homeLocationBtn" type="submit" id="button-addon2">Find Restaurants</button>
+                </div>
+                <small id="locationNameHelp" class="form-text text-muted"></small>
+              </div> 
+            </div>           
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 text-center">
+        <p id="errorMessageHomePage" class="form-text text-danger"></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-12" id="homePageSortBtnsDiv">
+        
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12" id="homePageRestaurantDetails">
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="container mt-5">
+    <div class="row">
+      <div class="offset-md-3 col-md-6 col-12">
+        <h2>Restaurants In Your Location</h2>
         <form class="form" role="form" onsubmit="showRestaurantsByLocation()">
           <div class="form-group row mt-3">
             <label class="col-lg-4 col-form-label form-control-label" for="locationName">Location</label>
@@ -43,9 +85,9 @@
         
       </div>
     </div>
-  </div>
+  </div> -->
 
-  <div class="container mt-5">
+  <!-- <div class="container mt-5">
     <div class="row">
       <div class="offset-md-3 col-md-6 col-12">
         <h2>Collections</h2>
@@ -80,9 +122,9 @@
         
       </div>
     </div>
-  </div>
+  </div> -->
 
-  <div class="container mt-5">
+  <!-- <div class="container mt-5">
     <div class="row">
       <div class="offset-md-3 col-md-6 col-12">
         <h2>Location Details</h2>
@@ -90,7 +132,7 @@
           <div class="form-group row">
             <label class="col-lg-4 col-form-label form-control-label"></label>
             <div class="col-lg-8">
-              <button type="button" class="btn btn-danger" onclick="showMyLocation()">show Restaurants in my area</button>
+              <button type="button" class="btn btn-danger" onclick="showMyLocation(showPosition)">show Restaurants in my area</button>
             </div>
           </div>
         </form>
@@ -110,7 +152,7 @@
         
       </div>
     </div>
-  </div>
+  </div> -->
   <script src="apiData.js"></script>
   <script src="index.js"></script>
 </body>

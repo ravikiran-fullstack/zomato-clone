@@ -55,9 +55,10 @@ function showHtmlForRestaurantsByLocation(restaurantsByLocationData, city_name){
       const card = document.createElement('div')
       card.classList.add('card','mt-3');
       //Need to make the image height same
+      const restaurantImage = fetchRandomImages();
       card.innerHTML = `<div class="row">
                           <div class="col-md-4 col-12">
-                            <img class="img-thumbnail" src="${restaurant.image_url}" alt="image not found">
+                            <img class="img-thumbnail" src="${restaurantImage}" alt="image not found">
                           </div>
                           <div class="col-md-8 col-12">
                             <div class="card-body">
@@ -133,7 +134,7 @@ async function fetchPreCollectionsData(){
 }
 
 function showCollections(collectionsData, cityName){
-  console.log(collectionsData, cityName);
+  // console.log(collectionsData, cityName);
   if(!collectionsData.collections){
     document.getElementById('errorMessageCollections').innerHTML = `${cityName} has no collections yet, please try another city`;
     document.getElementById('collectionDetails').innerHTML = '';
@@ -199,37 +200,33 @@ async function fetchLocationDetails(latitude, longitude){
   }
 }
 
-function showMyLocation() {
+function showMyLocation(cb) {
+  // console.log(cb);
   if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition);
+    navigator.geolocation.getCurrentPosition(cb);
   } else { 
-   // x.innerHTML = "Geolocation is not supported by this browser.";
+    document.getElementById('errorMessage').innerHTML = 'Enable Location is browser';
   }
 }
 
 function showPosition(position) {
-  console.log("Latitude: " + position.coords.latitude + 
-   "<br>Longitude: " + position.coords.longitude);
   const latitude = position.coords.latitude;
   const longitude = position.coords.longitude;
-  console.log(latitude, longitude);
-  setLatLong(latitude, longitude);
+  setLatLong(latitude, longitude, showLocationDetails);
 }
 
-//fetchLocationDetails('15.6353','76.896');
-
-async function setLatLong(latitude, longitude){  
+async function setLatLong(latitude, longitude, cb){  
   try{
     const data = await fetchLocationDetails(latitude, longitude);
-    showLocationDetails(data);
-    console.log(data);
+    cb(data);
+    // console.log(data);
   }catch(err){
     document.getElementById('errorMessage').innerHTML = 'Please try later';
   }
 }
 
 function showLocationDetails(locationDetails){
-  console.log('locationDetails', locationDetails);
+  // console.log('locationDetails', locationDetails);
   const cityName = locationDetails.location.city_name;
   const topCuisines = locationDetails.popularity.top_cuisines.join(',');
   document.getElementById('locationDetails').innerHTML = 
@@ -248,10 +245,11 @@ function showLocationDetails(locationDetails){
     const card = document.createElement('div')
     card.classList.add('card','mt-3');
     //Need to make the image height same
+    const restaurantImage = fetchRandomImages();
     card.innerHTML = `<div class="row">
                         <div class="col-md-4 col-12">
                         
-                          <img class="img-fluid" src="${restaurant.restaurant.featured_image}" alt="image not available">
+                          <img class="img-fluid" src="${restaurantImage}" alt="image not available">
                         </div>
                         <div class="col-md-8 col-12">
                           <div class="card-body">
@@ -266,9 +264,6 @@ function showLocationDetails(locationDetails){
 
     document.getElementById('locationDetails').append(card);                  
   });
-
-
-
 }
 
 function testLatitude(){
@@ -279,7 +274,7 @@ function testLatitude(){
     document.getElementById('latitudeHelp').innerHTML = '';
     document.querySelector('button[type="submit"]').disabled = false;
   } else {
-    console.log('not matched',lat);
+    // console.log('not matched',lat);
     lat.style.borderColor = 'red';
     document.getElementById('latitudeHelp').innerHTML = 'Invalid Format';
     document.querySelector('button[type="submit"]').disabled = true;
@@ -338,8 +333,7 @@ function testLongitude(){
 
 
 
-
-//3.A)Create functionality to list the restaurant based on cuisine, rating and location. 
+//3.A)Create functionality to list the restaurant based on cuisine 
 // Step1: Make call to /search https://developers.zomato.com/api/v2.1/search?count=10&cuisines=85 with cuisines ID hardcoded in the HTML UI and retrieve all the restaurants 
 
 //3.B)Create functionality to list the restaurant based on rating. 
@@ -348,6 +342,189 @@ function testLongitude(){
 //3.C)Create functionality to list the restaurant based on location. 
 // Step1: Make call to /locations https://developers.zomato.com/api/v2.1/locations?query=Bengaluru and get the latitude and longitude for Bengaluru
 // Step2: Make call to /search https://developers.zomato.com/api/v2.1/search?count=10&lat=12.971606&lon=77.594376 with latitude and longitude retrieved from Step1 and retrieve all the restaurants 
+
+//listRestaurantsInUserLocation
+//listRestaurantsInUserLocation();
+
+async function searchRestaurantsByCoords(entity_id, entity_type){
+  let url = `${RESTAURANTS_SEARCH_URL}?entity_id=${entity_id}&entity_type=${entity_type}`;
+  try{
+    const response = await fetch(url, {
+        headers: {
+          'Content-Type': 'application/json',
+          'user-key': `${API_KEY}`
+        },
+    });
+    const data = await response.json();
+    return data;
+  }catch(err){
+    document.getElementById('locationName').value = '';
+    document.getElementById('errorMessageRestaurantsByLocations').innerHTML = 'Please try again later';
+  }
+}
+
+async function searchCities(city_name){
+  let url = `${CITIES_URL}?q=${city_name}`;
+  try{
+    const response = await fetch(url, {
+        headers: {
+          'Content-Type': 'application/json',
+          'user-key': `${API_KEY}`
+        },
+    });
+    const data = await response.json();
+    return data;
+  }catch(err){
+    document.getElementById('locationHomePage').value = '';
+    document.getElementById('errorMessageHomePage').innerHTML = 'Please try again later';
+  }
+}
+
+
+async function searchRestaurantsByCityId(city_id, sortObj){
+                                                                        //&sort=rating&order=asc
+  let url = `${RESTAURANTS_SEARCH_URL}?entity_id=${city_id}&entity_type=city&sort=${sortObj.sortBy}&order=${sortObj.direction}`;
+  try{
+    const response = await fetch(url, {
+        headers: {
+          'Content-Type': 'application/json',
+          'user-key': `${API_KEY}`
+        },
+    });
+    const data = await response.json();
+    return data;
+  }catch(err){
+    document.getElementById('locationName').value = '';
+    document.getElementById('errorMessageRestaurantsByLocations').innerHTML = 'Please try again later';
+  }
+}
+
+async function getCoordinates(position) {
+ // const location = document.getElementById('locationHomePage').value;
+  const latitude = position.coords.latitude;
+  const longitude = position.coords.longitude;
+  // console.log(latitude, longitude, location)
+  const locationData = await fetchLocationDetails(latitude, longitude);
+  const entity_id = locationData.location.entity_id;
+  const entity_type = locationData.location.entity_type;
+  const city_name = locationData.location.city_name;
+  document.getElementById('locationHomePage').value = city_name;
+  const data = await searchRestaurantsByCoords(entity_id, entity_type);
+  populateHomePage(data,city_name);
+}
+
+function fetchRandomImages(){
+  const src = `/images/${Math.floor(Math.random()*15+ 1)}.jpg`;
+  return src;
+}
+
+//arrow_drop_down
+
+let sortByCostUp = false;
+let sortByRatingsUp = false;
+let sortByDistanceUp = false;
+let sortObj = {sortBy: 'cost', direction: 'desc'};
+function sortByCost(){
+  sortByCostUp = !sortByCostUp;
+  if(sortByCostUp === true){
+    sortObj = {sortBy: 'cost', direction: 'asc'};
+    document.getElementById('sortByCostId').innerHTML = 'By Cost <i class="material-icons">arrow_downward</i>';
+  } else {
+    sortObj = {sortBy: 'cost', direction: 'desc'};
+    document.getElementById('sortByCostId').innerHTML = 'By Cost <i class="material-icons">arrow_upward</i>';
+  }
+  callAsyncSearchFunction();
+}
+
+
+function sortByRatings(){
+  if(sortByRatingsUp){
+    sortObj.sortBy = 'rating'
+    sortObj.direction = 'asc';
+    document.getElementById('sortByRatingsId').innerHTML = 'By Ratings <i class="material-icons">arrow_downward</i>';
+  } else {
+    sortObj = {sortBy: 'rating', direction: 'desc'};
+    document.getElementById('sortByRatingsId').innerHTML = 'By Ratings <i class="material-icons">arrow_upward</i>';
+  }
+  callAsyncSearchFunction();
+  sortByRatingsUp = !sortByRatingsUp;
+}
+
+async function callAsyncSearchFunction(){
+  showRestaurantByCity();
+}
+function sortByDistance(){
+  if(sortByDistanceUp){
+    sortObj = {sortBy: 'real_distance', direction: 'asc'};
+    document.getElementById('sortByDistanceId').innerHTML = 'By Distance <i class="material-icons">arrow_downward</i>';
+  } else {
+    sortObj = {sortBy: 'real_distance', direction: 'desc'};
+    document.getElementById('sortByDistanceId').innerHTML = 'By Distance <i class="material-icons">arrow_upward</i>';
+  }
+  callAsyncSearchFunction();
+  sortByDistanceUp = !sortByDistanceUp;
+}
+
+function showSortBtns(){
+  document.getElementById('homePageSortBtnsDiv').innerHTML = '';
+  document.getElementById('homePageSortBtnsDiv').innerHTML = 
+  ` <div class="row locationDetailsTitle">
+      <div class="col-md-5">
+        <button class="btn btn-info homeSortBtn" onclick="sortByCost()"  id="sortByCostId">By Cost <i class="material-icons">arrow_downward</i></button>
+        <button class="btn btn-info homeSortBtn" onclick="sortByRatings()" id="sortByRatingsId">By Ratings <i class="material-icons">arrow_downward</i></button>
+        <button class="btn btn-info homeSortBtn" onclick="sortByDistance()" id="sortByDistanceId" disabled>By Distance <i class="material-icons">arrow_downward</i></button>
+      </div>
+    </div>`
+}
+
+function populateHomePage(restaurantsData){
+  document.getElementById('homePageRestaurantDetails').innerHTML = '';
+  restaurantsData.restaurants.forEach(restaurant => {
+      restaurant = restaurant.restaurant;
+      const card = document.createElement('div')
+      card.classList.add('card','mt-3');
+      // console.log(restaurant.user_rating.aggregate_rating);
+      const restaurantImage = fetchRandomImages();
+      card.innerHTML = `<div class="row">
+                          <div class="col-md-4 col-12">
+                            <img class="img-thumbnail" id="${restaurant.id}" src="${restaurantImage}" alt="image not found">
+                          </div>
+                          <div class="col-md-8 col-12">
+                            <div class="card-body">
+                              <h4 class="card-title text-capitalize">${restaurant.name}</h4>
+                              <p class="card-title text-capitalize"><span>${restaurant.establishment.join(' ')}</span></p>
+                              <p class="card-title text-capitalize">Cuisines: <span>${restaurant.cuisines}</span></p>
+                              <p class="card-title text-capitalize">Rating: <span>${restaurant.user_rating.aggregate_rating}</span></p>
+                              <p class="card-title text-capitalize">Price: <span>${restaurant.price_range}</span></p>
+                              <p class="card-title text-capitalize">Address: <span>${restaurant.location.address}</span></p>
+                              <a target="_blank" href="${restaurant.menu_url}">Check Menu</a>
+                            </div>
+                          </div>
+                        </div>`
+
+      document.getElementById('homePageRestaurantDetails').append(card);
+    });
+}
+
+function listRestaurantsInUserLocation(){
+  showMyLocation(getCoordinates);
+}
+
+async function showRestaurantByCity(){
+  const city_name = document.getElementById('locationHomePage').value;
+  const cityData = await searchCities(city_name);
+  const city_id = cityData.location_suggestions[0].id;
+  const restaurantData = await searchRestaurantsByCityId(city_id, sortObj);
+  // console.log('cityData',cityData);
+  // console.log('restaurantData',restaurantData);
+  populateHomePage(restaurantData, city_name);
+}
+
+function showRestaurantsByLocationHomePage(){
+  showSortBtns();
+  showRestaurantByCity();
+  event.preventDefault();
+}
 
 //4) Create functionality to list the daily menu in the restaurant. 
 // Not able to do this because https://developers.zomato.com/api/v2.1/dailymenu?res_id=18706428 responds back code 400 bad requests --
