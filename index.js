@@ -12,13 +12,19 @@ function showHomeSection(){
   document.getElementById('homeSection').classList.remove('hidden');
 
 
-  showSortBtns();
-  listRestaurantsInUserLocation();
+  loadHomeSection();
 
 
   previousBtn = 'homeBtn';
   previousSection = 'homeSection';
 }
+
+function loadHomeSection(){
+  showSortBtns();
+  listRestaurantsInUserLocation();
+}
+
+loadHomeSection();
 
 function showCollectionsSection(){
   if(previousBtn!== ''){
@@ -172,7 +178,6 @@ async function fetchCollections(cityId){
 }
 
 function showCollections(collectionsData, cityName){
-  // console.log(collectionsData, cityName);
   if(!collectionsData.collections){
     document.getElementById('errorMessageCollections').innerHTML = `${cityName} has no collections yet, please try another city`;
     document.getElementById('collectionDetails').innerHTML = '';
@@ -180,33 +185,32 @@ function showCollections(collectionsData, cityName){
   }
   document.getElementById('collectionDetails').innerHTML = 
   ` <div class="row locationDetailsTitle">
-        <div class="col-md-6 text-uppercase">
+        <div class="col-md-6 col-12 text-uppercase collectionsTitle">
           City Name: <span>${cityName}</span>
         </div>
-        <div class="col-md-6 text-uppercase text-center">
+        <div class="offset-md-3 col-md-3 col-12 text-uppercase collectionsTitle">
           Number of Collections: <span>${collectionsData.collections.length}</span>
         </div>
+    </div>
+    <div class="row" id="collectionDetailsRow">
+
     </div>`
   const collectionsArray = collectionsData.collections;
   collectionsArray.forEach(data => {
+    
     const collection = data.collection;
-    const card = document.createElement('div')
-    card.classList.add('card','mt-3');
-    //Need to make the image height same
-    card.innerHTML = `<div class="row">
-                        <div class="col-md-4 col-12">
-                          <img class="img-thumbnail" src="${collection.image_url}" alt="image not found">
-                        </div>
-                        <div class="col-md-8 col-12">
-                          <div class="card-body">
-                            <h4 class="card-title text-capitalize">${collection.title}</h4>
-                            <p class="card-title text-capitalize">${collection.description}</p>
-                            <a target="_blank" href="${collection.share_url}">More About this collection</a>
-                          </div>
-                        </div>
-                      </div>`
+        const col3 = document.createElement('div');
+        col3.classList.add('col-md-3','col-6', 'mb-3');
+        col3.innerHTML = `<div class="card bg-dark text-white">
+            <img src="${collection.image_url}" class="img-fluid-collections" alt="image not found">
+            <div class="card-img-overlay collectionCard">
+              <h5 class="card-title text-white" style="padding-top:75%;">${collection.title}</h5>
+              <u><a target="_blank" class="text-white" href="${collection.share_url}">More About this collection</a></u>
+            </div>
+          </div>
+          `;
 
-    document.getElementById('collectionDetails').append(card); 
+    document.getElementById('collectionDetailsRow').append(col3); 
   });
 }
 
@@ -216,11 +220,13 @@ async function fetchPreCollectionsData(){
     cityName = 'hyderabad';
     document.getElementById('cityName').value = cityName;
   }
+  document.getElementById('loadingIndicator').classList.remove('hidden');
   const locationData = await fetchLocation(cityName);
   
   const city_name = locationData.location_suggestions[0].city_name;
   const city_id = locationData.location_suggestions[0].city_id;
   const data = await fetchCollections(city_id);
+  document.getElementById('loadingIndicator').classList.add('hidden');
   showCollections(data, city_name);
 }
 
@@ -234,7 +240,6 @@ function getCollections(){
 function showLocationForCollections(position) {
   const latitude = position.coords.latitude;
   const longitude = position.coords.longitude;
-  console.log(latitude, longitude);
 }
 
 async function getCoordinatesForCollections(position) {
@@ -249,7 +254,6 @@ async function getCoordinatesForCollections(position) {
 }
 
 function detectLocationForCollections(){
-  console.log('detectLocationForCollections');
   showMyLocation(getCoordinatesForCollections); 
 }
 
@@ -289,10 +293,12 @@ function showPosition(position) {
   setLatLong(latitude, longitude, showLocationDetails);
 }
 
-async function setLatLong(latitude, longitude, cb){  
+async function setLatLong(latitude, longitude, cb){ 
+  document.getElementById('loadingIndicator').classList.remove('hidden');
   try{
     const data = await fetchLocationDetails(latitude, longitude);
     cb(data);
+    document.getElementById('loadingIndicator').classList.add('hidden');
     // console.log(data);
   }catch(err){
     document.getElementById('errorMessage').innerHTML = 'Please try later';
@@ -314,29 +320,30 @@ function showLocationDetails(locationDetails){
     </div>`
 
   const nearByRestaurants = locationDetails.nearby_restaurants;
+  const rowLocations = document.createElement('div');
+  rowLocations.classList.add('row');
+  rowLocations.setAttribute('id','rowLocations');
+  document.getElementById('locationDetails').append(rowLocations);  
   nearByRestaurants.forEach(restaurant => {
   
-    const card = document.createElement('div')
-    card.classList.add('card','mt-3');
+    const col4 = document.createElement('div')
+    col4.classList.add('col-4','mt-3');
     //Need to make the image height same
     const restaurantImage = fetchRandomImages();
-    card.innerHTML = `<div class="row">
-                        <div class="col-md-4 col-12">
-                        
-                          <img class="img-fluid" src="${restaurantImage}" alt="image not available">
+    col4.innerHTML = `<div class="card">
+                        <div>
+                          <img class="img-fluid-collections" src="${restaurantImage}" alt="image not available">
                         </div>
-                        <div class="col-md-8 col-12">
-                          <div class="card-body">
-                            <h4 class="card-title text-capitalize">Name: <span>${restaurant.restaurant.name}</span></h4>
-                            <p class="card-title text-capitalize">Address: <span>${restaurant.restaurant.location.address}</span></p>
-                            <p class="card-title text-capitalize">Rating: <span>${restaurant.restaurant.user_rating.aggregate_rating}</span></p>
-                            <p class="card-title text-capitalize">Cuisines: <span>${restaurant.restaurant.cuisines}</span></p>
-                            <p class="card-title text-capitalize">Price Range: <span>${restaurant.restaurant.price_range}</span></p>      
-                          </div>
+                        <div class="card-body">
+                          <h4 class="card-title text-capitalize">Name: <span>${restaurant.restaurant.name}</span></h4>
+                          <p class="card-title text-capitalize">Rating: <span>${restaurant.restaurant.user_rating.aggregate_rating}</span></p>
+                          <p class="card-title text-capitalize">Cuisines: <span>${restaurant.restaurant.cuisines}</span></p>
+                          <p class="card-title text-capitalize">${restaurant.restaurant.average_cost_for_two} per person</p>      
+                          <a target="_blank" href="${restaurant.restaurant.url}">Check Menu</a>
                         </div>
                       </div>`
 
-    document.getElementById('locationDetails').append(card);                  
+  document.getElementById('rowLocations').append(col4);  
   });
 }
 
@@ -456,7 +463,6 @@ async function searchCities(city_name){
 
 
 async function searchRestaurantsByCityId(city_id, sortObj){
-                                                                        //&sort=rating&order=asc
   let url = `${RESTAURANTS_SEARCH_URL}?entity_id=${city_id}&entity_type=city&sort=${sortObj.sortBy}&order=${sortObj.direction}`;
   try{
     const response = await fetch(url, {
@@ -468,6 +474,7 @@ async function searchRestaurantsByCityId(city_id, sortObj){
     const data = await response.json();
     return data;
   }catch(err){
+    console.error('-----------------------------------errroorrrrrrrrr')
     document.getElementById('locationName').value = '';
     document.getElementById('errorMessageRestaurantsByLocations').innerHTML = 'Please try again later';
   }
@@ -476,12 +483,16 @@ async function searchRestaurantsByCityId(city_id, sortObj){
 async function getCoordinates(position) {
   const latitude = position.coords.latitude;
   const longitude = position.coords.longitude;
+  
+  document.getElementById('loadingIndicator').classList.remove('hidden');
   const locationData = await fetchLocationDetails(latitude, longitude);
   const entity_id = locationData.location.entity_id;
   const entity_type = locationData.location.entity_type;
   const city_name = locationData.location.city_name;
   document.getElementById('locationHomePage').value = city_name;
   const data = await searchRestaurantsByCoords(entity_id, entity_type);
+  
+  document.getElementById('loadingIndicator').classList.add('hidden');
   populateHomePage(data,city_name);
 }
 
@@ -541,7 +552,10 @@ function showSortBtns(){
   document.getElementById('homePageSortBtnsDiv').innerHTML = '';
   document.getElementById('homePageSortBtnsDiv').innerHTML = 
   ` <div class="row locationDetailsTitle">
-      <div class="col-md-5">
+      <div class="col-md-3 col-12">
+        <h4>Restaurants nearby</h4>
+      </div> 
+      <div class="offset-md-5 col-md-4 text-center">
         <button class="btn btn-info homeSortBtn" onclick="sortByCost()"  id="sortByCostId">By Cost <i class="material-icons">arrow_downward</i></button>
         <button class="btn btn-info homeSortBtn" onclick="sortByRatings()" id="sortByRatingsId">By Ratings <i class="material-icons">arrow_downward</i></button>
         <button class="btn btn-info homeSortBtn" onclick="sortByDistance()" id="sortByDistanceId" disabled>By Distance <i class="material-icons">arrow_downward</i></button>
@@ -550,32 +564,39 @@ function showSortBtns(){
 }
 
 function populateHomePage(restaurantsData){
-  document.getElementById('homePageRestaurantDetails').innerHTML = '';
-  restaurantsData.restaurants.forEach(restaurant => {
-      restaurant = restaurant.restaurant;
-      const card = document.createElement('div')
-      card.classList.add('card','mt-3');
-      // console.log(restaurant.user_rating.aggregate_rating);
-      const restaurantImage = fetchRandomImages();
-      card.innerHTML = `<div class="row">
-                          <div class="col-md-4 col-12">
-                            <img class="img-thumbnail" id="${restaurant.id}" src="${restaurantImage}" alt="image not found">
-                          </div>
-                          <div class="col-md-8 col-12">
+  try{
+    document.getElementById('homePageRestaurantDetails').innerHTML = '';
+    const row = document.createElement('div');
+    row.setAttribute('id', 'rowHome');
+    row.classList.add('row')
+    document.getElementById('homePageRestaurantDetails').append(row);
+    restaurantsData.restaurants.forEach(restaurant => {
+        restaurant = restaurant.restaurant;
+        const card = document.createElement('div')
+        card.classList.add('col-md-4','col-12','mt-3');
+        const restaurantImage = fetchRandomImages();
+        card.innerHTML = `<div class="card">
+                            <img src="${restaurantImage}" class="img-fluid-collections" alt="image not found">
                             <div class="card-body">
-                              <h4 class="card-title text-capitalize">${restaurant.name}</h4>
-                              <p class="card-title text-capitalize"><span>${restaurant.establishment.join(' ')}</span></p>
-                              <p class="card-title text-capitalize">Cuisines: <span>${restaurant.cuisines}</span></p>
-                              <p class="card-title text-capitalize">Rating: <span>${restaurant.user_rating.aggregate_rating}</span></p>
-                              <p class="card-title text-capitalize">Price: <span>${restaurant.price_range}</span></p>
-                              <p class="card-title text-capitalize">Address: <span>${restaurant.location.address}</span></p>
-                              <a target="_blank" href="${restaurant.menu_url}">Check Menu</a>
+                            <h4 class="card-title text-capitalize">${restaurant.name}</h4>
+                            <p class="card-title text-capitalize">${restaurant.user_rating.aggregate_rating} (${restaurant.all_reviews_count} Reviews)</p>
+                            <p class="card-title text-capitalize text-truncate">${restaurant.cuisines}</p>
+                            <p class="card-title">${restaurant.currency}${restaurant.average_cost_for_two} per person</p>
+                            <a target="_blank" href="${restaurant.menu_url}">Check Menu</a>
                             </div>
-                          </div>
-                        </div>`
+                          </div>`
 
-      document.getElementById('homePageRestaurantDetails').append(card);
-    });
+        document.getElementById('rowHome').append(card);
+      });
+  }catch(err){
+    document.getElementById('errorMessageHomePage').innerHTML = 'Please Try refreshing the page';
+  }  
+  
+    console.log('loading end--------------------------')
+}
+
+function generateStars(ratings){
+
 }
 
 
@@ -594,13 +615,10 @@ async function showRestaurantByCity(){
   const cityData = await searchCities(city_name);
   const city_id = cityData.location_suggestions[0].id;
   const restaurantData = await searchRestaurantsByCityId(city_id, sortObj);
-  // console.log('cityData',cityData);
-  // console.log('restaurantData',restaurantData);
   populateHomePage(restaurantData, city_name);
 }
 
 function showRestaurantsByLocationHomePage(){
-  showSortBtns();
   showRestaurantByCity();
   event.preventDefault();
 }

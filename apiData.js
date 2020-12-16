@@ -1,4 +1,4 @@
-const API_KEY = '9af7220dba33a0911e597ecfa0d83a82';
+const API_KEY = '8cb5a46d6b87ada3788f2e0848f7f950';
 const GEO_CODE_URL =  'https://developers.zomato.com/api/v2.1/geocode';
 const DAILY_MENU_URL = 'https://developers.zomato.com/api/v2.1/dailymenu';
 const LOCATIONS_URL = 'https://developers.zomato.com/api/v2.1/locations';
