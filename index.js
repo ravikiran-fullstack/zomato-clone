@@ -119,9 +119,8 @@ function showHtmlForRestaurantsByLocation(restaurantsByLocationData, city_name){
                             <div class="card-body">
                               <h4 class="card-title text-capitalize">${restaurant.name}</h4>
                               <p class="card-title text-capitalize"><span>${restaurant.establishment.join(' ')}</span></p>
-                              <p class="card-title text-capitalize">Cuisines: <span>${restaurant.cuisines}</span></p>
-                              <p class="card-title text-capitalize">Rating: <span>${restaurant.user_rating.aggregate_rating}</span></p>
-                              <p class="card-title text-capitalize">Address: <span>${restaurant.location.address}</span></p>
+                              <p class="card-title text-capitalize text-truncate"><span>${restaurant.cuisines}</span></p>
+                              <p class="card-title text-capitalize"><span>${restaurant.user_rating.aggregate_rating}</span></p>
                               <a target="_blank" href="${restaurant.menu_url}">Check Menu</a>
                             </div>
                           </div>
@@ -534,7 +533,7 @@ function populateHomePage(restaurantsData){
                             <img src="${restaurantImage}" class="img-fluid-collections" alt="image not found">
                             <div class="card-body">
                             <h4 class="card-title text-capitalize">${restaurant.name}</h4>
-                            <p class="card-title text-capitalize">${restaurant.user_rating.aggregate_rating} (${restaurant.all_reviews_count} Reviews)</p>
+                            <p class="card-title text-capitalize"><strong>${restaurant.user_rating.aggregate_rating}</strong> (${restaurant.all_reviews_count} Reviews)</p>
                             <p class="card-title text-capitalize text-truncate">${restaurant.cuisines}</p>
                             <p class="card-title">${restaurant.currency}${restaurant.average_cost_for_two} per person</p>
                             <a target="_blank" href="${restaurant.menu_url}">Check Menu</a>
