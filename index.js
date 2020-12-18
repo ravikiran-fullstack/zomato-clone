@@ -11,7 +11,7 @@ function showHomeSection(){
   document.getElementById('homeBtn').classList.add('active');
   document.getElementById('homeSection').classList.remove('hidden');
 
-
+  document.getElementById('errorMessageHomePage').innerHTML = '';
   loadHomeSection();
 
 
@@ -174,23 +174,24 @@ async function fetchCollections(cityId){
 }
 
 function showCollections(collectionsData, cityName){
+  
   if(!collectionsData.collections){
     document.getElementById('errorMessageCollections').innerHTML = `${cityName} has no collections yet, please try another city`;
     document.getElementById('collectionDetails').innerHTML = '';
     return;
   }
   document.getElementById('collectionDetails').innerHTML = 
-  ` <div class="row locationDetailsTitle">
-        <div class="col-md-6 col-12 text-uppercase collectionsTitle">
-          City Name: <span>${cityName}</span>
-        </div>
-        <div class="offset-md-3 col-md-3 col-12 text-uppercase collectionsTitle">
-          Number of Collections: <span>${collectionsData.collections.length}</span>
-        </div>
-    </div>
-    <div class="row" id="collectionDetailsRow">
+                                                          ` <div class="row locationDetailsTitle">
+                                                                <div class="col-md-6 col-12 text-uppercase collectionsTitle">
+                                                                  City Name: <span>${cityName}</span>
+                                                                </div>
+                                                                <div class="offset-md-3 col-md-3 col-12 text-uppercase collectionsTitle">
+                                                                  Number of Collections: <span>${collectionsData.collections.length}</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row" id="collectionDetailsRow">
 
-    </div>`
+                                                            </div>`
   const collectionsArray = collectionsData.collections;
   collectionsArray.forEach(data => {
     
@@ -198,13 +199,13 @@ function showCollections(collectionsData, cityName){
         const col3 = document.createElement('div');
         col3.classList.add('col-md-3','col-6', 'mb-3');
         col3.innerHTML = `<div class="card bg-dark text-white">
-            <img src="${collection.image_url}" class="img-fluid-collections" alt="image not found">
-            <div class="card-img-overlay collectionCard">
-              <h5 class="card-title text-white" style="padding-top:68%;">${collection.title}</h5>
-              <u><a target="_blank" class="text-white" href="${collection.share_url}">More About this collection</a></u>
-            </div>
-          </div>
-          `;
+                            <img src="${collection.image_url}" class="img-fluid-collections" alt="image not found">
+                            <div class="card-img-overlay collectionCard">
+                              <h5 class="card-title text-white" style="padding-top:68%;">${collection.title}</h5>
+                              <u><a target="_blank" class="text-white" href="${collection.share_url}">More About this collection</a></u>
+                            </div>
+                          </div>
+                          `;
 
     document.getElementById('collectionDetailsRow').append(col3); 
   });
@@ -216,13 +217,15 @@ async function fetchPreCollectionsData(){
     cityName = 'Hyderabad';
     document.getElementById('cityName').value = cityName;
   }
-  document.getElementById('loadingIndicator').classList.remove('hidden');
+  document.getElementById('collectionDetails').innerHTML = '';
+  document.getElementById('loadingIndicatorCollections').classList.remove('hidden');
+  
   const locationData = await fetchLocation(cityName);
   
   const city_name = locationData.location_suggestions[0].city_name;
   const city_id = locationData.location_suggestions[0].city_id;
   const data = await fetchCollections(city_id);
-  document.getElementById('loadingIndicator').classList.add('hidden');
+  document.getElementById('loadingIndicatorCollections').classList.add('hidden');
   showCollections(data, city_name);
 }
 
@@ -240,13 +243,13 @@ function showLocationForCollections(position) {
 async function getCoordinatesForCollections(position) {
   const latitude = position.coords.latitude;
   const longitude = position.coords.longitude;
-  document.getElementById('loadingIndicator').classList.remove('hidden');
+  document.getElementById('loadingIndicatorCollections').classList.remove('hidden');
   const locationData = await fetchLocationDetails(latitude, longitude);
   const city_id = locationData.location.city_id;
   const city_name = locationData.location.city_name;
   document.getElementById('cityName').value = city_name;
   const data = await fetchCollections(city_id);
-  document.getElementById('loadingIndicator').classList.add('hidden');
+  document.getElementById('loadingIndicatorCollections').classList.add('hidden');
   showCollections(data, city_name);
 }
 
@@ -290,11 +293,12 @@ function showPosition(position) {
 }
 
 async function setLatLong(latitude, longitude, cb){ 
+  document.getElementById('locationDetails').innerHTML = '';
   document.getElementById('loadingIndicator').classList.remove('hidden');
   try{
     const data = await fetchLocationDetails(latitude, longitude);
     cb(data);
-    document.getElementById('loadingIndicator').classList.add('hidden');
+      document.getElementById('loadingIndicator').classList.add('hidden');
     // console.log(data);
   }catch(err){
     document.getElementById('errorMessage').innerHTML = 'Please try later';
@@ -440,8 +444,8 @@ async function searchRestaurantsByCityId(city_id, sortObj){
 async function getCoordinates(position) {
   const latitude = position.coords.latitude;
   const longitude = position.coords.longitude;
-  
-  document.getElementById('loadingIndicator').classList.remove('hidden');
+  document.getElementById('homePageRestaurantDetails').innerHTML = '';
+  document.getElementById('loadingIndicatorHomePage').classList.remove('hidden');
   const locationData = await fetchLocationDetails(latitude, longitude);
   const entity_id = locationData.location.entity_id;
   const entity_type = locationData.location.entity_type;
@@ -449,7 +453,7 @@ async function getCoordinates(position) {
   document.getElementById('locationHomePage').value = city_name;
   const data = await searchRestaurantsByCoords(entity_id, entity_type);
   
-  document.getElementById('loadingIndicator').classList.add('hidden');
+ document.getElementById('loadingIndicatorHomePage').classList.add('hidden');
   populateHomePage(data,city_name);
 }
 
@@ -503,8 +507,13 @@ function sortByDistance(){
   sortByDistanceUp = !sortByDistanceUp;
 }
 
+function hideSortBtns(){
+  document.getElementById('homePageSortBtnsDiv').classList.add('hidden');
+}
+
 function showSortBtns(){
   document.getElementById('homePageSortBtnsDiv').innerHTML = '';
+  document.getElementById('homePageSortBtnsDiv').classList.remove('hidden');
   document.getElementById('homePageSortBtnsDiv').innerHTML = 
   ` <div class="row locationDetailsTitle">
       <div class="col-md-3 col-12">
@@ -563,13 +572,25 @@ function listRestaurantsInUserLocation(){
 
 async function showRestaurantByCity(){
   const city_name = document.getElementById('locationHomePage').value;
+  document.getElementById('homePageRestaurantDetails').innerHTML = '';
+  document.getElementById('loadingIndicatorHomePage').classList.remove('hidden');
+
   const cityData = await searchCities(city_name);
+  if(cityData.location_suggestions.length === 0){
+    document.getElementById('locationHomePage').value = '';
+    document.getElementById('errorMessageHomePage').innerHTML = 'Please try again later';
+    document.getElementById('loadingIndicatorHomePage').classList.add('hidden');
+    //hideSortBtns();
+    return;
+  }
   const city_id = cityData.location_suggestions[0].id;
   const restaurantData = await searchRestaurantsByCityId(city_id, sortObj);
+  document.getElementById('loadingIndicatorHomePage').classList.add('hidden');
   populateHomePage(restaurantData, city_name);
 }
 
 function showRestaurantsByLocationHomePage(){
+  document.getElementById('errorMessageHomePage').innerHTML = '';
   showRestaurantByCity();
   event.preventDefault();
 }
