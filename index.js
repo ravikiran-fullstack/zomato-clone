@@ -174,7 +174,7 @@ async function fetchCollections(cityId){
 }
 
 function showCollections(collectionsData, cityName){
-  
+  document.getElementById('errorMessageCollections').innerHTML = ``;
   if(!collectionsData.collections){
     document.getElementById('errorMessageCollections').innerHTML = `${cityName} has no collections yet, please try another city`;
     document.getElementById('collectionDetails').innerHTML = '';
@@ -222,6 +222,14 @@ async function fetchPreCollectionsData(){
   
   const locationData = await fetchLocation(cityName);
   
+  if(locationData.location_suggestions.length === 0){
+    document.getElementById('errorMessageCollections').innerHTML = `${cityName} has no collections yet, please try another city`;
+    document.getElementById('collectionDetails').innerHTML = '';
+    document.getElementById('loadingIndicatorCollections').classList.add('hidden');
+    //hideSortBtns();
+    return;
+  }
+
   const city_name = locationData.location_suggestions[0].city_name;
   const city_id = locationData.location_suggestions[0].city_id;
   const data = await fetchCollections(city_id);
